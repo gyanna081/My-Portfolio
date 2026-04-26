@@ -1,4 +1,4 @@
-# ✨ Geanna Portfolio
+# ✨ Geanna's Portfolio
 
 Welcome to my personal portfolio — a space where I showcase my work, skills, and journey as a **Full Stack Developer**.
 
