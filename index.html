@@ -20,13 +20,13 @@
     <!-- Cat cursor follower -->
     <div class="cat-cursor" id="cat-cursor">😸</div>
     
-    <button id="theme-toggle" class="fixed top-4 right-4 p-2 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-slate-100 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors z-50">
+    <button id="theme-toggle" class="fixed top-3 right-3 sm:top-4 sm:right-4 p-2 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-slate-100 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors z-50">
       <svg id="sun-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
       <svg id="moon-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
     </button>
-    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <div id="page-shell" class="mx-auto max-w-7xl px-4 py-6 sm:py-10 sm:px-6 lg:px-8">
       <div class="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
-        <aside class="sticky top-8 self-start rounded-2xl border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 p-8 shadow-sm">
+        <aside class="min-w-0 self-start rounded-2xl border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 p-5 sm:p-8 shadow-sm lg:sticky lg:top-8">
           <div class="space-y-6">
             <div class="space-y-3">
               <div class="inline-flex rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-700">About</div>
@@ -41,8 +41,8 @@
             <div class="card-hover space-y-3 rounded-3xl bg-slate-50 dark:bg-slate-700 p-5 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
               <!-- Frontend Skills -->
               <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Frontend</p>
-              <div class="overflow-x-auto scrollbar-hide py-2" id="frontend-skills">
-                <div class="flex gap-2 whitespace-nowrap">
+              <div class="skills-scroll overflow-x-auto scrollbar-hide py-2" id="frontend-skills">
+                <div class="flex gap-2 whitespace-nowrap skills-track">
                   <span class="rounded-full bg-slate-100 dark:bg-slate-600 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-300">React.js</span>
                   <span class="rounded-full bg-slate-100 dark:bg-slate-600 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-300">Vite</span>
                   <span class="rounded-full bg-slate-100 dark:bg-slate-600 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-300">HTML</span>
@@ -58,8 +58,8 @@
 
               <!-- Backend Skills -->
               <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 mt-4">Backend</p>
-              <div class="overflow-x-auto scrollbar-hide py-2" id="backend-skills">
-                <div class="flex gap-2 whitespace-nowrap">
+              <div class="skills-scroll overflow-x-auto scrollbar-hide py-2" id="backend-skills">
+                <div class="flex gap-2 whitespace-nowrap skills-track">
                   <span class="rounded-full bg-slate-100 dark:bg-slate-600 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-300">Spring Boot</span>
                   <span class="rounded-full bg-slate-100 dark:bg-slate-600 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-300">Node.js</span>
                   <span class="rounded-full bg-slate-100 dark:bg-slate-600 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-300">Python</span>
@@ -83,12 +83,12 @@
           </div>
         </aside>
 
-        <main class="space-y-8">
+        <main class="min-w-0 space-y-8">
           <section class="space-y-8">
-            <article class="rounded-3xl bg-white dark:bg-slate-800 p-8 shadow-sm space-y-8">
+            <article class="rounded-3xl bg-white dark:bg-slate-800 p-5 sm:p-8 shadow-sm space-y-8">
               <div class="flex items-center gap-4">
                 <div>
-                  <h2 class="mt-4 text-3xl font-semibold text-slate-950 dark:text-slate-100">Experience</h2>
+                  <h2 class="mt-2 sm:mt-4 text-2xl sm:text-3xl font-semibold text-slate-950 dark:text-slate-100">Experience</h2>
                 </div>
               </div>
 
@@ -104,10 +104,10 @@
           </section>
 
           <section class="space-y-8">
-            <article class="rounded-3xl bg-white dark:bg-slate-800 p-8 shadow-sm space-y-8">
+            <article class="rounded-3xl bg-white dark:bg-slate-800 p-5 sm:p-8 shadow-sm space-y-8">
               <div class="flex items-center gap-4">
                 <div>
-                  <h2 class="mt-4 text-3xl font-semibold text-slate-950 dark:text-slate-100">Projects</h2>
+                  <h2 class="mt-2 sm:mt-4 text-2xl sm:text-3xl font-semibold text-slate-950 dark:text-slate-100">Projects</h2>
                 </div>
               </div>
 
@@ -137,10 +137,10 @@
           </section>
 
           <section class="space-y-8">
-            <article class="rounded-3xl bg-white dark:bg-slate-800 p-8 shadow-sm space-y-8">
+            <article class="rounded-3xl bg-white dark:bg-slate-800 p-5 sm:p-8 shadow-sm space-y-8">
               <div class="flex items-center gap-4">
                 <div>
-                  <h2 class="mt-4 text-3xl font-semibold text-slate-950 dark:text-slate-100">Licenses & Certifications</h2>
+                  <h2 class="mt-2 sm:mt-4 text-2xl sm:text-3xl font-semibold text-slate-950 dark:text-slate-100">Licenses & Certifications</h2>
                 </div>
               </div>
 
@@ -168,9 +168,9 @@
           </section>
 
           <section class="space-y-8">
-            <article class="rounded-3xl bg-white dark:bg-slate-800 p-8 shadow-sm space-y-8">
+            <article class="rounded-3xl bg-white dark:bg-slate-800 p-5 sm:p-8 shadow-sm space-y-8">
               <div>
-                <h2 class="mt-4 text-3xl font-semibold text-slate-950 dark:text-slate-100">Contact</h2>
+                <h2 class="mt-2 sm:mt-4 text-2xl sm:text-3xl font-semibold text-slate-950 dark:text-slate-100">Contact</h2>
               </div>
 
               <div class="grid gap-8 md:grid-cols-2">
@@ -248,6 +248,9 @@
     </div>
 
     <script>
+      const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      const isMobileViewport = window.matchMedia('(max-width: 640px)').matches;
+
       // Cat cursor follower with easing/inertia
       const catCursor = document.getElementById('cat-cursor');
       
@@ -303,9 +306,13 @@
         // Continue animation loop
         requestAnimationFrame(animate);
       }
-      
-      // Start the animation
-      animate();
+
+      if (supportsHover) {
+        // Start the animation only on pointer devices.
+        animate();
+      } else {
+        catCursor.style.display = 'none';
+      }
 
       // Skills auto-scroll with hover-to-manual
       const frontendSkills = document.getElementById('frontend-skills');
@@ -344,24 +351,30 @@
         }
       }
 
-      // Start auto-scroll on load
-      startAutoScroll();
+      // Start auto-scroll on load (desktop/tablet only).
+      if (!isMobileViewport) {
+        startAutoScroll();
+      }
 
       // Stop on hover, resume on mouse leave
       const skillsCard = frontendSkills.closest('.space-y-3');
-      skillsCard.addEventListener('mouseenter', stopAutoScroll);
-      skillsCard.addEventListener('mouseleave', startAutoScroll);
+      if (supportsHover) {
+        skillsCard.addEventListener('mouseenter', stopAutoScroll);
+        skillsCard.addEventListener('mouseleave', startAutoScroll);
+      }
       
       // Hide default cursor on hover over interactive elements
-      const interactiveElements = document.querySelectorAll('a, button');
-      interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-          catCursor.style.opacity = '0.5';
+      if (supportsHover) {
+        const interactiveElements = document.querySelectorAll('a, button');
+        interactiveElements.forEach(el => {
+          el.addEventListener('mouseenter', () => {
+            catCursor.style.opacity = '0.5';
+          });
+          el.addEventListener('mouseleave', () => {
+            catCursor.style.opacity = '1';
+          });
         });
-        el.addEventListener('mouseleave', () => {
-          catCursor.style.opacity = '1';
-        });
-      });
+      }
 
       // Theme toggle
       const themeToggle = document.getElementById('theme-toggle');
@@ -425,6 +438,32 @@
           contactSubmit.classList.remove('opacity-70', 'cursor-not-allowed');
         }
       });
+
+      // Mobile scroll reveal for section cards.
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        const revealTargets = document.querySelectorAll('article.rounded-3xl');
+
+        if (!('IntersectionObserver' in window)) {
+          revealTargets.forEach((el) => el.classList.add('is-visible'));
+        } else {
+          revealTargets.forEach((el) => el.classList.add('mobile-reveal'));
+
+          const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -6% 0px'
+          });
+
+          revealTargets.forEach((el) => revealObserver.observe(el));
+        }
+      }
+
     </script>
   </body>
 </html>
