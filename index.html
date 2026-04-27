@@ -16,7 +16,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+  <body class="bg-slate-100 text-slate-900 dark:bg-black dark:text-slate-100">
+    <!-- Background gradient blobs for glassmorphism effect -->
+    <div aria-hidden="true" class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+      <div style="position:absolute;top:-10%;left:-10%;width:60%;height:60%;background:radial-gradient(circle,rgba(139,92,246,0.55) 0%,transparent 70%);border-radius:50%;filter:blur(50px);"></div>
+      <div style="position:absolute;bottom:-10%;right:-5%;width:55%;height:55%;background:radial-gradient(circle,rgba(99,102,241,0.5) 0%,transparent 70%);border-radius:50%;filter:blur(50px);"></div>
+      <div style="position:absolute;top:40%;left:35%;width:40%;height:40%;background:radial-gradient(circle,rgba(167,139,250,0.45) 0%,transparent 70%);border-radius:50%;filter:blur(40px);"></div>
+    </div>
     <!-- Cat cursor follower -->
     <div class="cat-cursor" id="cat-cursor">😸</div>
     
@@ -31,9 +37,9 @@
             <div class="space-y-3">
               <div class="inline-flex rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-700">About</div>
               <div>
-                <img src="images/me.jpg" alt="Profile picture of Geanna Pacaña" class="w-20 h-20 rounded-full object-cover mx-auto mb-4">
-                <p class="text-sm uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400"><strong>Geanna Ricci P. Pacaña</strong></p>
-                <h2 class="mt-2 text-2xl font-semibold text-slate-950 dark:text-slate-100">Aspiring Full Stack Developer</h2>
+                <img src="images/me.jpg" alt="Profile picture of Geanna Pacaña" class="w-20 h-20 rounded-full object-cover mx-auto mb-4 float-avatar">
+                <p class="text-sm uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400"><strong class="gradient-name">Geanna Ricci P. Pacaña</strong></p>
+                <h2 id="typewriter" class="mt-2 text-2xl font-semibold gradient-title"></h2>
                 <p class="mt-3 text-slate-600 dark:text-slate-300">IT Student & Full-Stack Developer. Focused on building efficient, user-centric applications through JavaScript, Java, and Python. Passionate about RESTful architecture and AI integration.</p>
               </div>
             </div>
@@ -247,6 +253,116 @@
       </footer>
     </div>
 
+    <!-- ── Chat Widget ─────────────────────────────────────────────────────── -->
+
+    <!-- Floating toggle button -->
+    <button
+      id="chat-toggle-btn"
+      aria-label="Open AI chat"
+      aria-expanded="false"
+      class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg hover:bg-indigo-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+    >
+      <!-- Chat icon (shown when closed) -->
+      <svg id="chat-icon-open" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.77 9.77 0 01-4-.84L3 20l1.09-3.27A7.96 7.96 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+      </svg>
+      <!-- X icon (shown when open) -->
+      <svg id="chat-icon-close" class="h-6 w-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Chat panel -->
+    <div
+      id="chat-widget"
+      role="dialog"
+      aria-label="AI Chat"
+      class="hidden fixed bottom-24 right-6 z-50 flex flex-col w-[22rem] max-w-[calc(100vw-2rem)] h-[30rem] rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-2xl transition-all duration-200 scale-95 opacity-0 overflow-hidden"
+    >
+      <!-- Header -->
+      <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-indigo-600 rounded-t-2xl">
+        <div class="flex items-center gap-2">
+          <img src="images/me.jpg" alt="Geanna" class="w-9 h-9 rounded-full object-cover border-2 border-indigo-300 shrink-0" />
+          <div>
+            <p class="text-sm font-semibold text-slate-900 dark:text-white leading-tight">Chat with Geanna</p>
+          </div>
+        </div>
+        <button id="chat-close-btn" aria-label="Close chat" class="text-indigo-200 hover:text-white transition-colors focus:outline-none">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Messages -->
+      <div id="chat-messages" class="flex-1 overflow-y-auto px-4 py-3 space-y-3 scroll-smooth"></div>
+
+      <!-- Input -->
+      <form id="chat-form" class="flex items-center gap-2 px-3 py-3 border-t border-slate-200 dark:border-slate-700">
+        <input
+          id="chat-input"
+          type="text"
+          autocomplete="off"
+          placeholder="Ask about skills, projects…"
+          class="flex-1 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        />
+        <button
+          id="chat-send-btn"
+          type="submit"
+          aria-label="Send message"
+          class="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-400 shrink-0"
+        >
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <script src="chat.js" defer></script>
+
+    <script>
+      // ── Typewriter Effect ──────────────────────────────────────────────────
+      const typewriterEl = document.getElementById('typewriter');
+      const phrases = [
+        'Aspiring Full Stack Developer',
+        'Triathlete & Problem Solver',
+      ];
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typeSpeed = 70;
+      const deleteSpeed = 35;
+      const pauseAfterType = 1800;
+      const pauseAfterDelete = 400;
+
+      function type() {
+        const current = phrases[phraseIndex];
+        if (isDeleting) {
+          charIndex--;
+          typewriterEl.textContent = current.slice(0, charIndex);
+          if (charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(type, pauseAfterDelete);
+            return;
+          }
+          setTimeout(type, deleteSpeed);
+        } else {
+          charIndex++;
+          typewriterEl.textContent = current.slice(0, charIndex);
+          if (charIndex === current.length) {
+            isDeleting = true;
+            setTimeout(type, pauseAfterType);
+            return;
+          }
+          setTimeout(type, typeSpeed);
+        }
+      }
+
+      type();
+    </script>
+
     <script>
       const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
       const isMobileViewport = window.matchMedia('(max-width: 640px)').matches;
@@ -382,14 +498,16 @@
       const moonIcon = document.getElementById('moon-icon');
 
       // Initialize from localStorage
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
-      } else {
+      if (localStorage.theme === 'light') {
         document.documentElement.classList.remove('dark');
         sunIcon.classList.remove('hidden');
         moonIcon.classList.add('hidden');
+      } else {
+        // Default to dark mode
+        document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark';
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
       }
 
       themeToggle.addEventListener('click', () => {
@@ -438,6 +556,25 @@
           contactSubmit.classList.remove('opacity-70', 'cursor-not-allowed');
         }
       });
+
+      // 3D Tilt on project/cert cards
+      if (supportsHover) {
+        document.querySelectorAll('.card-hover').forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const cx = rect.width / 2;
+            const cy = rect.height / 2;
+            const rotateX = ((y - cy) / cy) * -8;
+            const rotateY = ((x - cx) / cx) * 8;
+            card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+          });
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) translateY(0)';
+          });
+        });
+      }
 
       // Mobile scroll reveal for section cards.
       if (window.matchMedia('(max-width: 768px)').matches) {
