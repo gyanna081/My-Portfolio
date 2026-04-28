@@ -438,3 +438,70 @@ html:not(.dark) #chat-widget .rounded-t-2xl button {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0; }
 }
+
+/* ── Skill Pills with Icons ───────────────────────────────────────────────── */
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.skill-pill i {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+html.dark .skill-pill {
+  background: rgba(30, 30, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+html.dark .skill-pill:hover {
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+/* ── CSS Marquee (glitch-free infinite scroll) ────────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: inline-flex !important;
+  width: max-content !important;
+  animation: marquee 18s linear infinite;
+}
+
+.marquee-track--slow {
+  animation-duration: 22s;
+}
+
+/* Pause on hover */
+#frontend-skills:hover .marquee-track,
+#backend-skills:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Fade edges */
+#frontend-skills,
+#backend-skills {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
