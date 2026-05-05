@@ -5,328 +5,358 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Geanna Ricci P. Pacaña</title>
     <link rel="icon" type="image/jpeg" href="images/me.jpg" />
-    <script>
-      // Configure Tailwind before loading
-      tailwindConfig = {
-        darkMode: 'class',
-        theme: {
-          extend: {}
-        }
-      };
-    </script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="bg-slate-100 text-slate-900 dark:bg-black dark:text-slate-100">
-    <!-- Background gradient blobs for glassmorphism effect -->
-    <div aria-hidden="true" class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      <div style="position:absolute;top:-10%;left:-10%;width:60%;height:60%;background:radial-gradient(circle,rgba(139,92,246,0.55) 0%,transparent 70%);border-radius:50%;filter:blur(50px);"></div>
-      <div style="position:absolute;bottom:-10%;right:-5%;width:55%;height:55%;background:radial-gradient(circle,rgba(99,102,241,0.5) 0%,transparent 70%);border-radius:50%;filter:blur(50px);"></div>
-      <div style="position:absolute;top:40%;left:35%;width:40%;height:40%;background:radial-gradient(circle,rgba(167,139,250,0.45) 0%,transparent 70%);border-radius:50%;filter:blur(40px);"></div>
-    </div>
-    <!-- Cat cursor follower -->
-    <div class="cat-cursor" id="cat-cursor">😸</div>
-    
-    <button id="theme-toggle" class="fixed top-3 right-3 sm:top-4 sm:right-4 p-2 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-slate-100 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors z-50">
-      <svg id="sun-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
-      <svg id="moon-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-    </button>
-    <div id="page-shell" class="mx-auto max-w-7xl px-4 py-6 sm:py-10 sm:px-6 lg:px-8">
-      <div class="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
-        <aside class="min-w-0 self-start rounded-2xl border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 p-5 sm:p-8 shadow-sm lg:sticky lg:top-8">
-          <div class="space-y-6">
-            <div class="space-y-3">
-              <div class="inline-flex rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-700">About</div>
-              <div>
-                <img src="images/me.jpg" alt="Profile picture of Geanna Pacaña" class="w-20 h-20 rounded-full object-cover mx-auto mb-4 float-avatar">
-                <p class="text-sm uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400"><strong class="gradient-name">Geanna Ricci P. Pacaña</strong></p>
-                <h2 id="typewriter" class="mt-2 text-2xl font-semibold gradient-title"></h2>
-                <p class="mt-3 text-slate-600 dark:text-slate-300">IT Student & Full-Stack Developer. Focused on building efficient, user-centric applications through JavaScript, Java, and Python. Passionate about RESTful architecture and AI integration.</p>
-              </div>
-            </div>
+  <body>
 
-            <div class="card-hover space-y-3 rounded-3xl bg-slate-50 dark:bg-slate-700 p-5 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-              <!-- Frontend Skills -->
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Frontend</p>
-              <div class="skills-scroll overflow-hidden py-2" id="frontend-skills">
-                <div class="flex gap-3 skills-track marquee-track">
-                  <span class="skill-pill"><i class="devicon-react-original colored"></i><span>React.js</span></span>
-                  <span class="skill-pill"><i class="devicon-vitejs-plain colored"></i><span>Vite</span></span>
-                  <span class="skill-pill"><i class="devicon-html5-plain colored"></i><span>HTML</span></span>
-                  <span class="skill-pill"><i class="devicon-css3-plain colored"></i><span>CSS</span></span>
-                  <span class="skill-pill"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></span>
-                  <span class="skill-pill"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></span>
-                  <!-- duplicate for seamless loop -->
-                  <span class="skill-pill"><i class="devicon-react-original colored"></i><span>React.js</span></span>
-                  <span class="skill-pill"><i class="devicon-vitejs-plain colored"></i><span>Vite</span></span>
-                  <span class="skill-pill"><i class="devicon-html5-plain colored"></i><span>HTML</span></span>
-                  <span class="skill-pill"><i class="devicon-css3-plain colored"></i><span>CSS</span></span>
-                  <span class="skill-pill"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></span>
-                  <span class="skill-pill"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></span>
-                </div>
-              </div>
+    <!-- ── RIGHT SIDE PAGE INDICATOR ───────────────────────────────────────── -->
+    <nav id="page-indicator" aria-label="Page navigation">
+      <button class="page-dot active" data-section="about"          aria-label="About"></button>
+      <button class="page-dot"        data-section="skills"         aria-label="Skills"></button>
+      <button class="page-dot"        data-section="experience"     aria-label="Experience"></button>
+      <button class="page-dot"        data-section="projects"       aria-label="Projects"></button>
+      <button class="page-dot"        data-section="certifications" aria-label="Certifications"></button>
+      <button class="page-dot"        data-section="contact"        aria-label="Contact"></button>
+    </nav>
 
-              <!-- Backend Skills -->
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 mt-4">Backend</p>
-              <div class="skills-scroll overflow-hidden py-2" id="backend-skills">
-                <div class="flex gap-3 skills-track marquee-track marquee-track--slow">
-                  <span class="skill-pill"><i class="devicon-spring-plain colored"></i><span>Spring Boot</span></span>
-                  <span class="skill-pill"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></span>
-                  <span class="skill-pill"><i class="devicon-python-plain colored"></i><span>Python</span></span>
-                  <span class="skill-pill"><i class="devicon-django-plain colored"></i><span>Django</span></span>
-                  <span class="skill-pill"><i class="devicon-php-plain colored"></i><span>PHP</span></span>
-                  <span class="skill-pill"><i class="devicon-java-plain colored"></i><span>Java</span></span>
-                  <span class="skill-pill"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></span>
-                  <span class="skill-pill"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></span>
-                  <!-- duplicate for seamless loop -->
-                  <span class="skill-pill"><i class="devicon-spring-plain colored"></i><span>Spring Boot</span></span>
-                  <span class="skill-pill"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></span>
-                  <span class="skill-pill"><i class="devicon-python-plain colored"></i><span>Python</span></span>
-                  <span class="skill-pill"><i class="devicon-django-plain colored"></i><span>Django</span></span>
-                  <span class="skill-pill"><i class="devicon-php-plain colored"></i><span>PHP</span></span>
-                  <span class="skill-pill"><i class="devicon-java-plain colored"></i><span>Java</span></span>
-                  <span class="skill-pill"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></span>
-                  <span class="skill-pill"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></span>
-                </div>
-              </div>
-            </div>
+    <!-- ── SCROLL CONTAINER ─────────────────────────────────────────────────── -->
+    <div id="scroll-container">
 
-            <div class="card-hover space-y-3 rounded-3xl bg-slate-50 dark:bg-slate-700 p-5 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Beyond the Screen</p>
-              <p class="text-sm leading-6 text-slate-600 dark:text-slate-300">When I’m not at my desk, I’m usually training for my next triathlon. I love the challenge of balancing three distinct disciplines and the mental grit required to push through the final mile. It’s a hobby that keeps me disciplined, goal-oriented, and constantly striving for a new personal best.</p>
-            </div>
-          </div>
-        </aside>
+    <!-- ── NAV ─────────────────────────────────────────────────────────────── -->
+    <nav id="navbar">
+      <div class="nav-inner">
+        <span class="nav-logo">GRP</span>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button id="theme-toggle" aria-label="Toggle theme">
+          <svg id="sun-icon" class="icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+          <svg id="moon-icon" class="icon hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+        </button>
+      </div>
+    </nav>
 
-        <main class="min-w-0 space-y-8">
-          <section class="space-y-8">
-            <article class="rounded-3xl bg-white dark:bg-slate-800 p-5 sm:p-8 shadow-sm space-y-8">
-              <div class="flex items-center gap-4">
-                <div>
-                  <h2 class="mt-2 sm:mt-4 text-2xl sm:text-3xl font-semibold text-slate-950 dark:text-slate-100">Experience</h2>
-                </div>
-              </div>
+    <!-- ── HERO ─────────────────────────────────────────────────────────────── -->
+    <section id="about" class="hero snap-section">
+      <div class="hero-inner">
+        <img src="images/me.jpg" alt="Geanna Pacaña" class="hero-avatar" />
+        <p class="hero-eyebrow">Hello, I'm</p>
+        <h1 class="hero-name">Geanna Ricci P. Pacaña</h1>
+        <h2 class="hero-typewriter"><span id="typewriter"></span></h2>
+        <p class="hero-bio">IT Student &amp; Full-Stack Developer. Focused on building efficient, user-centric applications through JavaScript, Java, and Python. Passionate about RESTful architecture and AI integration.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Get in touch</a>
+          <a href="RESUME_GeannaRicciPacana.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Download CV</a>
+        </div>
+      </div>
+    </section>
 
-              <div class="card-hover rounded-3xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 p-6 grid gap-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-                <div>
-                  <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">IT Intern</p>
-                  <p class="text-sm text-slate-500 dark:text-slate-400">Knowles Training Institute Singapore • Remote • January 2026 – May 2026 (Ongoing)</p>
-                </div>
-                <span class="self-start rounded-full bg-slate-100 dark:bg-slate-600 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600 dark:text-slate-400">Web Development</span>
-                <p class="sm:col-span-2 mt-2 text-slate-600 dark:text-slate-300">Created and managed WordPress pages, including layout setup, content writing, and basic site maintenance.</p>
-              </div>
-            </article>
-          </section>
-
-          <section class="space-y-8">
-            <article class="rounded-3xl bg-white dark:bg-slate-800 p-5 sm:p-8 shadow-sm space-y-8">
-              <div class="flex items-center gap-4">
-                <div>
-                  <h2 class="mt-2 sm:mt-4 text-2xl sm:text-3xl font-semibold text-slate-950 dark:text-slate-100">Projects</h2>
-                </div>
-              </div>
-
-              <div class="grid gap-6 sm:grid-cols-2">
-                <div class="card-hover rounded-3xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 p-6 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-                  <img src="images/wildcatscircuithub.png" alt="Wildcats CircuitHub" class="w-full h-36 object-cover rounded-2xl mb-4" />
-                  <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Wildcats CircuitHub: Equipment Management System</p>
-                  <p class="text-sm text-slate-500 dark:text-slate-400">Full-Stack Developer</p>
-                  <p class="mt-2 text-slate-600 dark:text-slate-300">Developed a robust web-based system for CIT-U’s ECE Department to digitize laboratory equipment tracking. Leveraged Vite/React for a high-performance frontend and Spring Boot for a scalable backend architecture.</p>
-                </div>
-                <div class="card-hover rounded-3xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 p-6 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-                  <img src="images/ccsgadgethub.png" alt="CCS GadgetHub" class="w-full h-36 object-cover rounded-2xl mb-4" />
-                  <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">CCS GadgetHub: Gadget Lending Platform</p>
-                  <p class="text-sm text-slate-500 dark:text-slate-400">Backend Developer</p>
-                  <p class="mt-2 text-slate-600 dark:text-slate-300">Developed the server-side architecture for a departmental tracking system. Implemented REST APIs, Firebase Auth, and RBAC using Spring Boot to manage secure item borrowing and user permissions across platforms.</p>
-                </div>
-                <div class="card-hover rounded-3xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 p-6 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-                  <img src="images/bims.png" alt="BIMS" class="w-full h-36 object-cover rounded-2xl mb-4" />
-                  <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Barangay Information Management System (BIMS)</p>
-                  <p class="text-sm text-slate-500 dark:text-slate-400">Full-Stack Developer</p>
-                  <p class="mt-2 text-slate-600 dark:text-slate-300">Built backend and frontend using Python, Django, HTML, and Java; developed APIs for structured data management and retrieval</p>
-                </div>
-                <div class="card-hover rounded-3xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 p-6 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-                  <img src="images/pap.png" alt="Pet and Pals" class="w-full h-36 object-cover rounded-2xl mb-4" />
-                  <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Pet and Pals</p>
-                  <p class="text-sm text-slate-500 dark:text-slate-400">Full-Stack Developer</p>
-                  <p class="mt-2 text-slate-600 dark:text-slate-300">Created responsive React.js UI and built backend APIs with Spring Boot and MySQL for product management and transactions</p>
-                </div>
-              </div>
-            </article>
-          </section>
-
-          <section class="space-y-8">
-            <article class="rounded-3xl bg-white dark:bg-slate-800 p-5 sm:p-8 shadow-sm space-y-8">
-              <div class="flex items-center gap-4">
-                <div>
-                  <h2 class="mt-2 sm:mt-4 text-2xl sm:text-3xl font-semibold text-slate-950 dark:text-slate-100">Licenses & Certifications</h2>
-                </div>
-              </div>
-
-              <div class="grid gap-6 sm:grid-cols-2">
-                <div class="card-hover rounded-3xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 p-6 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-                  <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">HCIA-Storage V4.5 Course</p>
-                  <p class="text-sm text-slate-500 dark:text-slate-400">Huawei • Issued Feb 2022</p>
-                </div>
-                <div class="card-hover rounded-3xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 p-6 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-                  <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">HCIP-Storage V5.0 Course</p>
-                  <p class="text-sm text-slate-500 dark:text-slate-400">Huawei • Issued Mar 2022</p>
-                </div>
-                <div class="card-hover rounded-3xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 p-6 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-                  <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">AWS Academy Graduate - Cloud Architecting</p>
-                  <p class="text-sm text-slate-500 dark:text-slate-400">Amazon Web Services Training and Certification • Issued Dec 2025</p>
-                  <a href="https://www.credly.com/badges/bfb62afa-fe7f-474c-84a3-a9753bb6e57d" target="_blank" class="text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 text-sm">View Credential</a>
-                </div>
-                <div class="card-hover rounded-3xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 p-6 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-                  <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">AWS Academy Graduate - Cloud Foundations</p>
-                  <p class="text-sm text-slate-500 dark:text-slate-400">Amazon Web Services Training and Certification • Issued Sep 2025</p>
-                  <a href="https://www.credly.com/badges/a5505919-9f85-430e-b9cd-6748bf5e0c19" target="_blank" class="text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 text-sm">View Credential</a>
-                </div>
-              </div>
-            </article>
-          </section>
-
-          <section class="space-y-8">
-            <article class="rounded-3xl bg-white dark:bg-slate-800 p-5 sm:p-8 shadow-sm space-y-8">
-              <div>
-                <h2 class="mt-2 sm:mt-4 text-2xl sm:text-3xl font-semibold text-slate-950 dark:text-slate-100">Contact</h2>
-              </div>
-
-              <div class="grid gap-8 md:grid-cols-2">
-                <div class="space-y-6">
-                  <p class="text-slate-600 dark:text-slate-300">
-                    Let’s connect and build something impactful. Whether you’re looking for a full stack developer, need help bringing a product to life, or just want to talk tech, I’d be glad to connect.
-                  </p>
-                  <a href="mailto:pacanageanna@gmail.com" class="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 font-semibold">
-                    pacanageanna@gmail.com
-                  </a>
-                  <div>
-                    <a href="RESUME_GeannaRicciPacana.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700 transition-colors">
-                      Download CV
-                    </a>
-                  </div>
-
-                  <div class="grid gap-4 sm:grid-cols-2">
-                    <a href="https://www.linkedin.com/in/geannapacana/" target="_blank" rel="noopener noreferrer" class="card-hover rounded-2xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 p-4 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-                      <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">LinkedIn</p>
-                      <div class="mt-1 inline-flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                        <svg class="h-4 w-4 text-indigo-500 dark:text-indigo-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                        <span>@geannapacana</span>
-                      </div>
-                    </a>
-                    <a href="https://www.instagram.com/geannaricci/" target="_blank" rel="noopener noreferrer" class="card-hover rounded-2xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 p-4 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-                      <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Instagram</p>
-                      <div class="mt-1 inline-flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                        <svg class="h-4 w-4 text-pink-500 dark:text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>
-                        <span>@geannaricci</span>
-                      </div>
-                    </a>
-                    <a href="https://github.com/gyanna081" target="_blank" rel="noopener noreferrer" class="card-hover rounded-2xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 p-4 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-                      <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">GitHub</p>
-                      <div class="mt-1 inline-flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                        <svg class="h-4 w-4 text-slate-700 dark:text-slate-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.74.5 12.2c0 5.16 3.3 9.54 7.88 11.09.58.11.79-.26.79-.57 0-.28-.01-1.03-.02-2.02-3.21.71-3.89-1.58-3.89-1.58-.53-1.37-1.3-1.73-1.3-1.73-1.06-.74.08-.73.08-.73 1.17.09 1.79 1.23 1.79 1.23 1.04 1.82 2.73 1.29 3.4.99.11-.77.41-1.29.74-1.59-2.56-.3-5.25-1.31-5.25-5.83 0-1.29.45-2.34 1.19-3.16-.12-.3-.52-1.5.11-3.13 0 0 .97-.32 3.18 1.21a10.8 10.8 0 0 1 5.78 0c2.2-1.53 3.17-1.21 3.17-1.21.63 1.63.23 2.83.11 3.13.74.82 1.19 1.87 1.19 3.16 0 4.53-2.69 5.52-5.26 5.82.42.37.79 1.08.79 2.19 0 1.58-.01 2.85-.01 3.24 0 .31.2.69.8.57A11.72 11.72 0 0 0 23.5 12.2C23.5 5.74 18.35.5 12 .5z"/></svg>
-                        <span>@gyanna081</span>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                <div class="card-hover rounded-3xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 p-6 hover:shadow-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-200">
-                  <h3 class="text-xl font-semibold text-slate-900 dark:text-slate-100">Send me a message</h3>
-                  <form id="contact-form" class="mt-6 space-y-4" action="https://formspree.io/f/mjgjzlvb" method="post">
-                    <input type="hidden" name="_subject" value="New portfolio contact message" />
-                    <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
-                    <div>
-                      <label for="contact-name" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Name</label>
-                      <input id="contact-name" name="name" type="text" required placeholder="Your full name" class="mt-2 w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-400" />
-                    </div>
-                    <div>
-                      <label for="contact-email" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Email</label>
-                      <input id="contact-email" name="email" type="email" required placeholder="you@example.com" class="mt-2 w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-400" />
-                    </div>
-                    <div>
-                      <label for="contact-message" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Message</label>
-                      <textarea id="contact-message" name="message" rows="4" required placeholder="Tell me about your project or inquiry..." class="mt-2 w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
-                    </div>
-                    <button id="contact-submit" type="submit" class="w-full rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700 transition-colors">
-                      Send message
-                    </button>
-                    <p id="contact-form-status" class="hidden text-sm text-slate-600 dark:text-slate-300" role="status" aria-live="polite"></p>
-                  </form>
-                </div>
-              </div>
-            </article>
-          </section>
-        </main>
+    <!-- ── SKILLS MARQUEE ───────────────────────────────────────────────────── -->
+    <section id="skills" class="marquee-section snap-section">
+      <div class="marquee-label">Frontend</div>
+      <div class="marquee-wrapper">
+        <div class="marquee-track">
+          <span class="skill-pill"><i class="devicon-react-original colored"></i>React.js</span>
+          <span class="skill-pill"><i class="devicon-vitejs-plain colored"></i>Vite</span>
+          <span class="skill-pill"><i class="devicon-html5-plain colored"></i>HTML</span>
+          <span class="skill-pill"><i class="devicon-css3-plain colored"></i>CSS</span>
+          <span class="skill-pill"><i class="devicon-javascript-plain colored"></i>JavaScript</span>
+          <span class="skill-pill"><i class="devicon-tailwindcss-plain colored"></i>Tailwind</span>
+          <!-- duplicate -->
+          <span class="skill-pill"><i class="devicon-react-original colored"></i>React.js</span>
+          <span class="skill-pill"><i class="devicon-vitejs-plain colored"></i>Vite</span>
+          <span class="skill-pill"><i class="devicon-html5-plain colored"></i>HTML</span>
+          <span class="skill-pill"><i class="devicon-css3-plain colored"></i>CSS</span>
+          <span class="skill-pill"><i class="devicon-javascript-plain colored"></i>JavaScript</span>
+          <span class="skill-pill"><i class="devicon-tailwindcss-plain colored"></i>Tailwind</span>
+        </div>
       </div>
 
-      <footer class="mt-16 py-8 text-center text-sm text-slate-500 dark:text-slate-400">
-        © 2026 Geanna Ricci P. Pacaña. All Rights Reserved.<br>
-        Developed in Cebu City, Philippines
-      </footer>
-    </div>
+      <div class="marquee-label" style="margin-top:1.5rem;">Backend &amp; Tools</div>
+      <div class="marquee-wrapper">
+        <div class="marquee-track marquee-track--reverse">
+          <span class="skill-pill"><i class="devicon-spring-plain colored"></i>Spring Boot</span>
+          <span class="skill-pill"><i class="devicon-nodejs-plain colored"></i>Node.js</span>
+          <span class="skill-pill"><i class="devicon-python-plain colored"></i>Python</span>
+          <span class="skill-pill"><i class="devicon-django-plain colored"></i>Django</span>
+          <span class="skill-pill"><i class="devicon-php-plain colored"></i>PHP</span>
+          <span class="skill-pill"><i class="devicon-java-plain colored"></i>Java</span>
+          <span class="skill-pill"><i class="devicon-mysql-plain colored"></i>MySQL</span>
+          <span class="skill-pill"><i class="devicon-firebase-plain colored"></i>Firebase</span>
+          <!-- duplicate -->
+          <span class="skill-pill"><i class="devicon-spring-plain colored"></i>Spring Boot</span>
+          <span class="skill-pill"><i class="devicon-nodejs-plain colored"></i>Node.js</span>
+          <span class="skill-pill"><i class="devicon-python-plain colored"></i>Python</span>
+          <span class="skill-pill"><i class="devicon-django-plain colored"></i>Django</span>
+          <span class="skill-pill"><i class="devicon-php-plain colored"></i>PHP</span>
+          <span class="skill-pill"><i class="devicon-java-plain colored"></i>Java</span>
+          <span class="skill-pill"><i class="devicon-mysql-plain colored"></i>MySQL</span>
+          <span class="skill-pill"><i class="devicon-firebase-plain colored"></i>Firebase</span>
+        </div>
+      </div>
+    </section>
 
-    <!-- ── Chat Widget ─────────────────────────────────────────────────────── -->
+    <!-- ── EXPERIENCE ───────────────────────────────────────────────────────── -->
+    <section id="experience" class="content-section snap-section">
+      <div class="section-inner">
+        <h2 class="section-title">Experience</h2>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <p class="exp-role">IT Intern</p>
+              <p class="exp-company">Knowles Training Institute Singapore &bull; Remote</p>
+              <p class="exp-date">January 2026 – May 2026 (Ongoing)</p>
+            </div>
+            <span class="tag">Web Development</span>
+          </div>
+          <p class="exp-desc">Created and managed WordPress pages, including layout setup, content writing, and basic site maintenance.</p>
+        </div>
+      </div>
+    </section>
 
-    <!-- Floating toggle button -->
-    <button
-      id="chat-toggle-btn"
-      aria-label="Open AI chat"
-      aria-expanded="false"
-      class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg hover:bg-indigo-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
-    >
-      <!-- Chat icon (shown when closed) -->
-      <svg id="chat-icon-open" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+    <!-- ── PROJECTS ─────────────────────────────────────────────────────────── -->
+    <section id="projects" class="content-section projects-section snap-section">
+      <div class="section-inner">
+
+        <h2 class="projects-heading">My Projects</h2>
+
+        <!-- Pill tab nav -->
+        <nav class="proj-tabs" role="tablist" aria-label="Projects">
+          <button class="proj-tab active" role="tab" aria-selected="true"  data-target="proj-0">Wildcats CircuitHub</button>
+          <button class="proj-tab"        role="tab" aria-selected="false" data-target="proj-1">CCS GadgetHub</button>
+          <button class="proj-tab"        role="tab" aria-selected="false" data-target="proj-2">BIMS</button>
+          <button class="proj-tab"        role="tab" aria-selected="false" data-target="proj-3">Pet and Pals</button>
+          <button class="proj-tab"        role="tab" aria-selected="false" data-target="proj-4">VaporVandal</button>
+        </nav>
+
+        <!-- File panel -->
+        <div class="proj-stage" id="proj-stage">
+
+          <!-- Panel 0 -->
+          <div class="proj-panel active" id="proj-0" role="tabpanel">
+            <div class="proj-panel-inner">
+              <div class="proj-panel-img-wrap">
+                <img src="images/wildcatscircuithub.png" alt="Wildcats CircuitHub" class="proj-panel-img" />
+              </div>
+              <div class="proj-panel-content">
+                <span class="proj-panel-role">Full-Stack Developer</span>
+                <h3 class="proj-panel-title">Wildcats CircuitHub: Equipment Management System</h3>
+                <p class="proj-panel-desc">Developed a robust web-based system for CIT-U's ECE Department to digitize laboratory equipment tracking. Leveraged Vite/React for a high-performance frontend and Spring Boot for a scalable backend architecture.</p>
+                <div class="proj-panel-tags">
+                  <span><i class="devicon-react-original colored"></i>React</span>
+                  <span><i class="devicon-vitejs-plain colored"></i>Vite</span>
+                  <span><i class="devicon-spring-plain colored"></i>Spring Boot</span>
+                  <span><i class="devicon-java-plain colored"></i>Java</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 1 -->
+          <div class="proj-panel" id="proj-1" role="tabpanel">
+            <div class="proj-panel-inner">
+              <div class="proj-panel-img-wrap">
+                <img src="images/ccsgadgethub.png" alt="CCS GadgetHub" class="proj-panel-img" />
+              </div>
+              <div class="proj-panel-content">
+                <span class="proj-panel-role">Backend Developer</span>
+                <h3 class="proj-panel-title">CCS GadgetHub: Gadget Lending Platform</h3>
+                <p class="proj-panel-desc">Developed the server-side architecture for a departmental tracking system. Implemented REST APIs, Firebase Auth, and RBAC using Spring Boot to manage secure item borrowing and user permissions across platforms.</p>
+                <div class="proj-panel-tags">
+                  <span><i class="devicon-spring-plain colored"></i>Spring Boot</span>
+                  <span><i class="devicon-firebase-plain colored"></i>Firebase</span>
+                  <span><svg class="tag-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>REST API</span>
+                  <span><svg class="tag-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>RBAC</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 2 -->
+          <div class="proj-panel" id="proj-2" role="tabpanel">
+            <div class="proj-panel-inner">
+              <div class="proj-panel-img-wrap">
+                <img src="images/bims.png" alt="BIMS" class="proj-panel-img" />
+              </div>
+              <div class="proj-panel-content">
+                <span class="proj-panel-role">Full-Stack Developer</span>
+                <h3 class="proj-panel-title">Barangay Information Management System (BIMS)</h3>
+                <p class="proj-panel-desc">Built backend and frontend using Python, Django, HTML, and Java; developed APIs for structured data management and retrieval.</p>
+                <div class="proj-panel-tags">
+                  <span><i class="devicon-python-plain colored"></i>Python</span>
+                  <span><i class="devicon-django-plain colored"></i>Django</span>
+                  <span><i class="devicon-java-plain colored"></i>Java</span>
+                  <span><i class="devicon-html5-plain colored"></i>HTML</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 3 -->
+          <div class="proj-panel" id="proj-3" role="tabpanel">
+            <div class="proj-panel-inner">
+              <div class="proj-panel-img-wrap">
+                <img src="images/pap.png" alt="Pet and Pals" class="proj-panel-img" />
+              </div>
+              <div class="proj-panel-content">
+                <span class="proj-panel-role">Full-Stack Developer</span>
+                <h3 class="proj-panel-title">Pet and Pals</h3>
+                <p class="proj-panel-desc">Created responsive React.js UI and built backend APIs with Spring Boot and MySQL for product management and transactions.</p>
+                <div class="proj-panel-tags">
+                  <span><i class="devicon-react-original colored"></i>React.js</span>
+                  <span><i class="devicon-spring-plain colored"></i>Spring Boot</span>
+                  <span><i class="devicon-mysql-plain colored"></i>MySQL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 4 -->
+          <div class="proj-panel" id="proj-4" role="tabpanel">
+            <div class="proj-panel-inner">
+              <div class="proj-panel-img-wrap">
+                <img src="images/vaporvandal.png" alt="VaporVandal" class="proj-panel-img" />
+              </div>
+              <div class="proj-panel-content">
+                <span class="proj-panel-role">Experimental / Solo Project</span>
+                <h3 class="proj-panel-title">VaporVandal</h3>
+                <p class="proj-panel-desc">An experimental browser experience where you shatter the screen with your hands. Built to explore how MediaPipe works and push the limits of real-time hand tracking in the browser.</p>
+                <div class="proj-panel-tags">
+                  <span><svg class="tag-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 11V6l-6-3-6 3v5c0 5 6 8 6 8s6-3 6-8z"/></svg>MediaPipe Hands</span>
+                  <span><svg class="tag-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>Canvas 2D API</span>
+                  <span><i class="devicon-vitejs-plain colored"></i>Vite</span>
+                  <span><i class="devicon-typescript-plain colored"></i>TypeScript</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /proj-stage -->
+      </div>
+    </section>
+
+    <!-- ── CERTIFICATIONS ───────────────────────────────────────────────────── -->
+    <section id="certifications" class="content-section snap-section">
+      <div class="section-inner">
+        <h2 class="section-title">Licenses &amp; Certifications</h2>
+        <div class="certs-grid">
+
+          <div class="cert-card">
+            <p class="cert-title">HCIA-Storage V4.5 Course</p>
+            <p class="cert-issuer">Huawei &bull; Issued Feb 2022</p>
+          </div>
+
+          <div class="cert-card">
+            <p class="cert-title">HCIP-Storage V5.0 Course</p>
+            <p class="cert-issuer">Huawei &bull; Issued Mar 2022</p>
+          </div>
+
+          <div class="cert-card">
+            <p class="cert-title">AWS Academy Graduate – Cloud Architecting</p>
+            <p class="cert-issuer">Amazon Web Services &bull; Issued Dec 2025</p>
+            <a href="https://www.credly.com/badges/bfb62afa-fe7f-474c-84a3-a9753bb6e57d" target="_blank" class="cert-link">View Credential →</a>
+          </div>
+
+          <div class="cert-card">
+            <p class="cert-title">AWS Academy Graduate – Cloud Foundations</p>
+            <p class="cert-issuer">Amazon Web Services &bull; Issued Sep 2025</p>
+            <a href="https://www.credly.com/badges/a5505919-9f85-430e-b9cd-6748bf5e0c19" target="_blank" class="cert-link">View Credential →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ──────────────────────────────────────────────────────────── -->
+    <section id="contact" class="content-section alt-bg snap-section">
+      <div class="section-inner contact-inner">
+
+        <div class="contact-left">
+          <h2 class="section-title">Let's Connect</h2>
+          <p class="contact-bio">Whether you're looking for a full-stack developer, need help bringing a product to life, or just want to talk tech — I'd be glad to connect.</p>
+          <a href="mailto:pacanageanna@gmail.com" class="contact-email">pacanageanna@gmail.com</a>
+
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/geannapacana/" target="_blank" rel="noopener noreferrer" class="social-card">
+              <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/gyanna081" target="_blank" rel="noopener noreferrer" class="social-card">
+              <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.74.5 12.2c0 5.16 3.3 9.54 7.88 11.09.58.11.79-.26.79-.57 0-.28-.01-1.03-.02-2.02-3.21.71-3.89-1.58-3.89-1.58-.53-1.37-1.3-1.73-1.3-1.73-1.06-.74.08-.73.08-.73 1.17.09 1.79 1.23 1.79 1.23 1.04 1.82 2.73 1.29 3.4.99.11-.77.41-1.29.74-1.59-2.56-.3-5.25-1.31-5.25-5.83 0-1.29.45-2.34 1.19-3.16-.12-.3-.52-1.5.11-3.13 0 0 .97-.32 3.18 1.21a10.8 10.8 0 0 1 5.78 0c2.2-1.53 3.17-1.21 3.17-1.21.63 1.63.23 2.83.11 3.13.74.82 1.19 1.87 1.19 3.16 0 4.53-2.69 5.52-5.26 5.82.42.37.79 1.08.79 2.19 0 1.58-.01 2.85-.01 3.24 0 .31.2.69.8.57A11.72 11.72 0 0 0 23.5 12.2C23.5 5.74 18.35.5 12 .5z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.instagram.com/geannaricci/" target="_blank" rel="noopener noreferrer" class="social-card">
+              <svg class="social-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+              <span>Instagram</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <form id="contact-form" action="https://formspree.io/f/mjgjzlvb" method="post">
+            <input type="hidden" name="_subject" value="New portfolio contact message" />
+            <input type="text" name="_gotcha" class="hidden-field" tabindex="-1" autocomplete="off" />
+            <div class="form-group">
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" required placeholder="Your full name" />
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" required placeholder="you@example.com" />
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="4" required placeholder="Tell me about your project or inquiry..."></textarea>
+            </div>
+            <button id="contact-submit" type="submit" class="btn btn-primary full-width">Send Message</button>
+            <p id="contact-form-status" class="form-status hidden" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── FOOTER ───────────────────────────────────────────────────────────── -->
+    <footer>
+      <p>© 2026 Geanna Ricci P. Pacaña. All Rights Reserved.</p>
+      <p>Developed in Cebu City, Philippines</p>
+    </footer>
+
+    </div><!-- /scroll-container -->
+
+    <!-- ── CHAT WIDGET ──────────────────────────────────────────────────────── -->
+    <button id="chat-toggle-btn" aria-label="Open AI chat" aria-expanded="false">
+      <svg id="chat-icon-open" class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.77 9.77 0 01-4-.84L3 20l1.09-3.27A7.96 7.96 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
       </svg>
-      <!-- X icon (shown when open) -->
-      <svg id="chat-icon-close" class="h-6 w-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+      <svg id="chat-icon-close" class="icon hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
 
-    <!-- Chat panel -->
-    <div
-      id="chat-widget"
-      role="dialog"
-      aria-label="AI Chat"
-      class="hidden fixed bottom-24 right-6 z-50 flex flex-col w-[22rem] max-w-[calc(100vw-2rem)] h-[30rem] rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-2xl transition-all duration-200 scale-95 opacity-0 overflow-hidden"
-    >
-      <!-- Header -->
-      <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-indigo-600 rounded-t-2xl">
-        <div class="flex items-center gap-2">
-          <img src="images/me.jpg" alt="Geanna" class="w-9 h-9 rounded-full object-cover border-2 border-indigo-300 shrink-0" />
-          <div>
-            <p class="text-sm font-semibold text-slate-900 dark:text-white leading-tight">Chat with Geanna</p>
-          </div>
+    <div id="chat-widget" role="dialog" aria-label="AI Chat" class="hidden">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <img src="images/me.jpg" alt="Geanna" class="chat-avatar" />
+          <p class="chat-header-name">Chat with Geanna</p>
         </div>
-        <button id="chat-close-btn" aria-label="Close chat" class="text-indigo-200 hover:text-white transition-colors focus:outline-none">
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <button id="chat-close-btn" aria-label="Close chat">
+          <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
-
-      <!-- Messages -->
-      <div id="chat-messages" class="flex-1 overflow-y-auto px-4 py-3 space-y-3 scroll-smooth"></div>
-
-      <!-- Input -->
-      <form id="chat-form" class="flex items-center gap-2 px-3 py-3 border-t border-slate-200 dark:border-slate-700">
-        <input
-          id="chat-input"
-          type="text"
-          autocomplete="off"
-          placeholder="Ask about skills, projects…"
-          class="flex-1 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-400"
-        />
-        <button
-          id="chat-send-btn"
-          type="submit"
-          aria-label="Send message"
-          class="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-400 shrink-0"
-        >
-          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+      <div id="chat-messages"></div>
+      <form id="chat-form">
+        <input id="chat-input" type="text" autocomplete="off" placeholder="Ask about skills, projects…" />
+        <button id="chat-send-btn" type="submit" aria-label="Send message">
+          <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
           </svg>
         </button>
@@ -335,20 +365,90 @@
 
     <script src="chat.js" defer></script>
 
+    <!-- ── Project Tab Switcher ──────────────────────────────────────────── -->
     <script>
-      // ── Typewriter Effect ──────────────────────────────────────────────────
+    (() => {
+      const tabs   = document.querySelectorAll('.proj-tab');
+      const panels = document.querySelectorAll('.proj-panel');
+      const stage  = document.getElementById('proj-stage');
+
+      // Direction: +1 = new tab is to the right, -1 = to the left
+      let currentIndex = 0;
+
+      function getIndex(el) {
+        return [...tabs].indexOf(el);
+      }
+
+      function switchTo(newIndex) {
+        if (newIndex === currentIndex) return;
+
+        const dir = newIndex > currentIndex ? 1 : -1;
+        const outPanel = panels[currentIndex];
+        const inPanel  = panels[newIndex];
+
+        // Update tab pills
+        tabs[currentIndex].classList.remove('active');
+        tabs[currentIndex].setAttribute('aria-selected', 'false');
+        tabs[newIndex].classList.add('active');
+        tabs[newIndex].setAttribute('aria-selected', 'true');
+
+        // ── Exit: slide old panel out ──────────────────────────────────────
+        outPanel.classList.add('exiting');
+        outPanel.style.setProperty('--slide-dir', dir);
+
+        outPanel.addEventListener('animationend', () => {
+          outPanel.classList.remove('active', 'exiting');
+          outPanel.style.removeProperty('--slide-dir');
+        }, { once: true });
+
+        // ── Enter: slide new panel in from opposite side ───────────────────
+        inPanel.style.setProperty('--slide-dir', dir);
+        inPanel.classList.add('active', 'entering');
+
+        inPanel.addEventListener('animationend', () => {
+          inPanel.classList.remove('entering');
+          inPanel.style.removeProperty('--slide-dir');
+        }, { once: true });
+
+        currentIndex = newIndex;
+      }
+
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => switchTo(i));
+      });
+    })();
+    </script>
+
+    <script>
+      // ── Theme Toggle ──────────────────────────────────────────────────────
+      const themeToggle = document.getElementById('theme-toggle');
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+
+      if (localStorage.theme === 'light') {
+        document.documentElement.classList.remove('dark');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark';
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+
+      themeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.theme = isDark ? 'dark' : 'light';
+        sunIcon.classList.toggle('hidden');
+        moonIcon.classList.toggle('hidden');
+      });
+
+      // ── Navbar scroll shadow — driven by scroll-container (see below) ──────
+
+      // ── Typewriter ────────────────────────────────────────────────────────
       const typewriterEl = document.getElementById('typewriter');
-      const phrases = [
-        'Aspiring Full Stack Developer',
-        'Triathlete & Problem Solver',
-      ];
-      let phraseIndex = 0;
-      let charIndex = 0;
-      let isDeleting = false;
-      const typeSpeed = 70;
-      const deleteSpeed = 35;
-      const pauseAfterType = 1800;
-      const pauseAfterDelete = 400;
+      const phrases = ['Full-Stack Developer', 'Triathlete & Problem Solver'];
+      let phraseIndex = 0, charIndex = 0, isDeleting = false;
 
       function type() {
         const current = phrases[phraseIndex];
@@ -358,241 +458,105 @@
           if (charIndex === 0) {
             isDeleting = false;
             phraseIndex = (phraseIndex + 1) % phrases.length;
-            setTimeout(type, pauseAfterDelete);
+            setTimeout(type, 400);
             return;
           }
-          setTimeout(type, deleteSpeed);
+          setTimeout(type, 35);
         } else {
           charIndex++;
           typewriterEl.textContent = current.slice(0, charIndex);
           if (charIndex === current.length) {
             isDeleting = true;
-            setTimeout(type, pauseAfterType);
+            setTimeout(type, 1800);
             return;
           }
-          setTimeout(type, typeSpeed);
+          setTimeout(type, 70);
         }
       }
-
       type();
-    </script>
 
-    <script>
-      const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-      const isMobileViewport = window.matchMedia('(max-width: 640px)').matches;
-
-      // Cat cursor follower with easing/inertia
-      const catCursor = document.getElementById('cat-cursor');
-      
-      // Mouse position (target)
-      let mouseX = 0;
-      let mouseY = 0;
-      
-      // Cat position (current - follows with delay)
-      let catX = 0;
-      let catY = 0;
-      
-      // Previous mouse X for direction detection
-      let prevMouseX = 0;
-      
-      // Easing factor (lower = more delay/smoother)
-      const easing = 0.1;
-      
-      // Track mouse movement
-      document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-      });
-      
-      // Animation loop using requestAnimationFrame
-      function animate() {
-        // Calculate distance to target
-        const distX = mouseX - catX;
-        const distY = mouseY - catY;
-        
-        // Apply easing (inertia effect)
-        catX += distX * easing;
-        catY += distY * easing;
-        
-        // Flip cat based on direction
-        if (mouseX < prevMouseX - 5) {
-          // Moving left - flip horizontally
-          catCursor.style.transform = `translate(${catX}px, ${catY}px) scaleX(-1)`;
-        } else if (mouseX > prevMouseX + 5) {
-          // Moving right - normal orientation
-          catCursor.style.transform = `translate(${catX}px, ${catY}px) scaleX(1)`;
-        } else {
-          // Keep current flip state
-          const currentTransform = catCursor.style.transform;
-          if (currentTransform.includes('scaleX(-1)')) {
-            catCursor.style.transform = `translate(${catX}px, ${catY}px) scaleX(-1)`;
-          } else {
-            catCursor.style.transform = `translate(${catX}px, ${catY}px) scaleX(1)`;
-          }
-        }
-        
-        prevMouseX = mouseX;
-        
-        // Continue animation loop
-        requestAnimationFrame(animate);
-      }
-
-      if (supportsHover) {
-        // Start the animation only on pointer devices.
-        animate();
-      } else {
-        catCursor.style.display = 'none';
-      }
-
-      // Skills auto-scroll with hover-to-manual
-      const frontendSkills = document.getElementById('frontend-skills');
-      const backendSkills = document.getElementById('backend-skills');
-      let frontendInterval = null;
-      let backendInterval = null;
-      const scrollSpeed = 1;
-
-      function startAutoScroll() {
-        // No-op — scrolling handled by CSS marquee animation
-      }
-
-      function stopAutoScroll() {
-        // No-op
-      }
-
-      // Start auto-scroll on load (desktop/tablet only).
-      if (!isMobileViewport) {
-        startAutoScroll();
-      }
-
-      // Stop on hover, resume on mouse leave
-      const skillsCard = frontendSkills.closest('.space-y-3');
-      if (supportsHover) {
-        skillsCard.addEventListener('mouseenter', stopAutoScroll);
-        skillsCard.addEventListener('mouseleave', startAutoScroll);
-      }
-      
-      // Hide default cursor on hover over interactive elements
-      if (supportsHover) {
-        const interactiveElements = document.querySelectorAll('a, button');
-        interactiveElements.forEach(el => {
-          el.addEventListener('mouseenter', () => {
-            catCursor.style.opacity = '0.5';
-          });
-          el.addEventListener('mouseleave', () => {
-            catCursor.style.opacity = '1';
-          });
-        });
-      }
-
-      // Theme toggle
-      const themeToggle = document.getElementById('theme-toggle');
-      const sunIcon = document.getElementById('sun-icon');
-      const moonIcon = document.getElementById('moon-icon');
-
-      // Initialize from localStorage
-      if (localStorage.theme === 'light') {
-        document.documentElement.classList.remove('dark');
-        sunIcon.classList.remove('hidden');
-        moonIcon.classList.add('hidden');
-      } else {
-        // Default to dark mode
-        document.documentElement.classList.add('dark');
-        localStorage.theme = 'dark';
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
-      }
-
-      themeToggle.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.toggle('dark');
-        
-        // Save preference
-        localStorage.theme = isDark ? 'dark' : 'light';
-        
-        // Toggle icons
-        sunIcon.classList.toggle('hidden');
-        moonIcon.classList.toggle('hidden');
-      });
-
-      // Contact form submission via Formspree (stays on page)
+      // ── Contact form ──────────────────────────────────────────────────────
       const contactForm = document.getElementById('contact-form');
       const contactSubmit = document.getElementById('contact-submit');
       const contactStatus = document.getElementById('contact-form-status');
 
-      contactForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
         contactStatus.classList.remove('hidden');
-        contactStatus.textContent = 'Sending message...';
+        contactStatus.textContent = 'Sending…';
         contactSubmit.disabled = true;
-        contactSubmit.classList.add('opacity-70', 'cursor-not-allowed');
 
         try {
-          const response = await fetch(contactForm.action, {
+          const res = await fetch(contactForm.action, {
             method: 'POST',
             body: new FormData(contactForm),
-            headers: {
-              Accept: 'application/json'
-            }
+            headers: { Accept: 'application/json' }
           });
-
-          if (response.ok) {
-            contactStatus.textContent = 'Message sent successfully. Thank you!';
-            contactForm.reset();
-          } else {
-            contactStatus.textContent = 'Something went wrong. Please try again or email me directly.';
-          }
-        } catch (error) {
-          contactStatus.textContent = 'Network error. Please check your connection and try again.';
+          contactStatus.textContent = res.ok
+            ? 'Message sent! Thank you.'
+            : 'Something went wrong. Please try again.';
+          if (res.ok) contactForm.reset();
+        } catch {
+          contactStatus.textContent = 'Network error. Check your connection.';
         } finally {
           contactSubmit.disabled = false;
-          contactSubmit.classList.remove('opacity-70', 'cursor-not-allowed');
         }
       });
 
-      // 3D Tilt on project/cert cards
-      if (supportsHover) {
-        document.querySelectorAll('.card-hover').forEach(card => {
-          card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const cx = rect.width / 2;
-            const cy = rect.height / 2;
-            const rotateX = ((y - cy) / cy) * -8;
-            const rotateY = ((x - cx) / cx) * 8;
-            card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+      // ── Scroll reveal ─────────────────────────────────────────────────────
+      const revealEls = document.querySelectorAll('.project-card, .cert-card, .exp-card');
+      if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); }
           });
-          card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) translateY(0)';
-          });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => obs.observe(el));
+      } else {
+        revealEls.forEach(el => el.classList.add('revealed'));
+      }
+
+      // ── Page indicator sync ───────────────────────────────────────────────
+      const scrollContainer = document.getElementById('scroll-container');
+      const sections = [...document.querySelectorAll('.snap-section')];
+      const dots     = [...document.querySelectorAll('.page-dot')];
+
+      function updateDots() {
+        const mid = scrollContainer.scrollTop + scrollContainer.clientHeight / 2;
+        let closest = 0;
+        let minDist = Infinity;
+        sections.forEach((s, i) => {
+          const dist = Math.abs(s.offsetTop + s.offsetHeight / 2 - mid);
+          if (dist < minDist) { minDist = dist; closest = i; }
         });
+        dots.forEach((d, i) => d.classList.toggle('active', i === closest));
       }
 
-      // Mobile scroll reveal for section cards.
-      if (window.matchMedia('(max-width: 768px)').matches) {
-        const revealTargets = document.querySelectorAll('article.rounded-3xl');
+      scrollContainer.addEventListener('scroll', updateDots, { passive: true });
+      updateDots();
 
-        if (!('IntersectionObserver' in window)) {
-          revealTargets.forEach((el) => el.classList.add('is-visible'));
-        } else {
-          revealTargets.forEach((el) => el.classList.add('mobile-reveal'));
+      // Dot click → scroll to section
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          sections[i].scrollIntoView({ behavior: 'smooth' });
+        });
+      });
 
-          const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-              }
-            });
-          }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -6% 0px'
-          });
+      // Nav link clicks → scroll into snap container
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', e => {
+          const target = document.querySelector(link.getAttribute('href'));
+          if (target && target.closest('#scroll-container')) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
 
-          revealTargets.forEach((el) => revealObserver.observe(el));
-        }
-      }
-
+      // Navbar scrolled state driven by scroll-container
+      scrollContainer.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', scrollContainer.scrollTop > 20);
+      }, { passive: true });
     </script>
   </body>
 </html>

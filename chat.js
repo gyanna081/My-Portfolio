@@ -129,8 +129,12 @@
       const data = await res.json();
       hideTyping();
 
-      if (!res.ok) throw new Error(data.error || "Unknown error");
+      if (res.status === 429) {
+        appendMessage("assistant", `⏳ ${data.error}`);
+        return;
+      }
 
+      if (!res.ok) throw new Error(data.error || "Unknown error");
       appendMessage("assistant", data.reply);
     } catch (err) {
       hideTyping();
