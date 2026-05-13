@@ -337,6 +337,7 @@ html.dark .skill-pill:hover {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.75rem;
+  margin-bottom: 1.5rem;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.4s ease, transform 0.4s ease;
