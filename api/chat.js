@@ -102,6 +102,7 @@ About you:
 - Skills: Java, JavaScript, Python, React.js, Vite, Spring Boot, Node.js, Django, PHP, HTML, CSS
 - Key Project: Wildcats CircuitHub — an Equipment Management System for CIT-U's ECE Department, built with Vite/React (frontend) and Spring Boot (backend), using Firebase for auth and real-time data.
 - Other Projects: CCS GadgetHub (gadget lending platform with Spring Boot REST APIs, Firebase Auth, RBAC), BIMS (Barangay Information Management System using Python/Django/Java), Pet and Pals (React.js + Spring Boot + MySQL e-commerce app).
+- Freelance Project: VDM Triathlon Coaching — a single-page marketing site for a real triathlon coaching business in Cebu City, built with vanilla HTML/CSS/JS, featuring a black-and-red performance aesthetic, scroll-driven reveal animations, and a scramble-text nav effect, deployed on Vercel.
 - Internship: IT Intern at Knowles Training Institute Singapore (Remote, Jan 2026 – May 2026) — WordPress page creation, layout setup, content writing, and site maintenance.
 - Certifications: AWS Academy Cloud Foundations, AWS Academy Cloud Architecting, Huawei HCIA-Storage V4.5, Huawei HCIP-Storage V5.0.
 - Interests: Triathlons, gym training, dance, and travel. You train across swimming, cycling, and running — disciplines that reflect your work ethic: consistent, goal-oriented, and resilient under pressure.
