@@ -6,6 +6,9 @@
     <title>Geanna Ricci P. Pacaña</title>
     <link rel="icon" type="image/jpeg" href="images/me.jpg" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -133,169 +136,22 @@
     </section>
 
     <!-- ── PROJECTS ─────────────────────────────────────────────────────────── -->
-    <section id="projects" class="content-section projects-section snap-section">
-      <div class="section-inner">
+    <section id="projects" class="projects-section snap-section" aria-labelledby="projects-heading">
+      <div class="work-inner">
 
-        <h2 class="projects-heading">My Projects</h2>
+        <header class="work-header">
+          <h2 class="work-heading" id="projects-heading">Selected Work</h2>
+          <p class="work-intro">Full-stack builds, freelance sites and a few experiments. Hover or tap a card to take a closer look.</p>
+        </header>
 
-        <!-- Pill tab nav -->
-        <nav class="proj-tabs" role="tablist" aria-label="Projects">
-          <button class="proj-tab active" role="tab" aria-selected="true"  data-target="proj-0">Wildcats CircuitHub</button>
-          <button class="proj-tab"        role="tab" aria-selected="false" data-target="proj-1">CCS GadgetHub</button>
-          <button class="proj-tab"        role="tab" aria-selected="false" data-target="proj-2">BIMS</button>
-          <button class="proj-tab"        role="tab" aria-selected="false" data-target="proj-3">Pet and Pals</button>
-          <button class="proj-tab"        role="tab" aria-selected="false" data-target="proj-4">VaporVandal</button>
-          <button class="proj-tab"        role="tab" aria-selected="false" data-target="proj-5">The Only SC</button>
-          <button class="proj-tab"        role="tab" aria-selected="false" data-target="proj-6">VDM Coaching</button>
-        </nav>
+        <!-- Cards are rendered from the `projects` array in the script below -->
+        <ul class="work-cards" id="work-cards"></ul>
 
-        <!-- File panel -->
-        <div class="proj-stage" id="proj-stage">
-
-          <!-- Panel 0 -->
-          <div class="proj-panel active" id="proj-0" role="tabpanel">
-            <div class="proj-panel-inner">
-              <div class="proj-panel-img-wrap">
-                <img src="images/wildcatscircuithub.png" alt="Wildcats CircuitHub" class="proj-panel-img" />
-              </div>
-              <div class="proj-panel-content">
-                <span class="proj-panel-role">Full-Stack Developer</span>
-                <h3 class="proj-panel-title">Wildcats CircuitHub: Equipment Management System</h3>
-                <p class="proj-panel-desc">Developed a robust web-based system for CIT-U's ECE Department to digitize laboratory equipment tracking. Leveraged Vite/React for a high-performance frontend and Spring Boot for a scalable backend architecture.</p>
-                <div class="proj-panel-tags">
-                  <span><i class="devicon-react-original colored"></i>React</span>
-                  <span><i class="devicon-vitejs-plain colored"></i>Vite</span>
-                  <span><i class="devicon-spring-plain colored"></i>Spring Boot</span>
-                  <span><i class="devicon-java-plain colored"></i>Java</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel 1 -->
-          <div class="proj-panel" id="proj-1" role="tabpanel">
-            <div class="proj-panel-inner">
-              <div class="proj-panel-img-wrap">
-                <img src="images/ccsgadgethub.png" alt="CCS GadgetHub" class="proj-panel-img" />
-              </div>
-              <div class="proj-panel-content">
-                <span class="proj-panel-role">Backend Developer</span>
-                <h3 class="proj-panel-title">CCS GadgetHub: Gadget Lending Platform</h3>
-                <p class="proj-panel-desc">Developed the server-side architecture for a departmental tracking system. Implemented REST APIs, Firebase Auth, and RBAC using Spring Boot to manage secure item borrowing and user permissions across platforms.</p>
-                <div class="proj-panel-tags">
-                  <span><i class="devicon-spring-plain colored"></i>Spring Boot</span>
-                  <span><i class="devicon-firebase-plain colored"></i>Firebase</span>
-                  <span><svg class="tag-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>REST API</span>
-                  <span><svg class="tag-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>RBAC</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel 2 -->
-          <div class="proj-panel" id="proj-2" role="tabpanel">
-            <div class="proj-panel-inner">
-              <div class="proj-panel-img-wrap">
-                <img src="images/bims.png" alt="BIMS" class="proj-panel-img" />
-              </div>
-              <div class="proj-panel-content">
-                <span class="proj-panel-role">Full-Stack Developer</span>
-                <h3 class="proj-panel-title">Barangay Information Management System (BIMS)</h3>
-                <p class="proj-panel-desc">Built backend and frontend using Python, Django, HTML, and Java; developed APIs for structured data management and retrieval.</p>
-                <div class="proj-panel-tags">
-                  <span><i class="devicon-python-plain colored"></i>Python</span>
-                  <span><i class="devicon-django-plain colored"></i>Django</span>
-                  <span><i class="devicon-java-plain colored"></i>Java</span>
-                  <span><i class="devicon-html5-plain colored"></i>HTML</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel 3 -->
-          <div class="proj-panel" id="proj-3" role="tabpanel">
-            <div class="proj-panel-inner">
-              <div class="proj-panel-img-wrap">
-                <img src="images/pap.png" alt="Pet and Pals" class="proj-panel-img" />
-              </div>
-              <div class="proj-panel-content">
-                <span class="proj-panel-role">Full-Stack Developer</span>
-                <h3 class="proj-panel-title">Pet and Pals</h3>
-                <p class="proj-panel-desc">Created responsive React.js UI and built backend APIs with Spring Boot and MySQL for product management and transactions.</p>
-                <div class="proj-panel-tags">
-                  <span><i class="devicon-react-original colored"></i>React.js</span>
-                  <span><i class="devicon-spring-plain colored"></i>Spring Boot</span>
-                  <span><i class="devicon-mysql-plain colored"></i>MySQL</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel 4 -->
-          <div class="proj-panel" id="proj-4" role="tabpanel">
-            <div class="proj-panel-inner">
-              <div class="proj-panel-img-wrap">
-                <img src="images/vaporvandal.png" alt="VaporVandal" class="proj-panel-img" />
-              </div>
-              <div class="proj-panel-content">
-                <span class="proj-panel-role">Experimental / Solo Project</span>
-                <h3 class="proj-panel-title">VaporVandal</h3>
-                <p class="proj-panel-desc">An experimental browser experience where you shatter the screen with your hands. Built to explore how MediaPipe works and push the limits of real-time hand tracking in the browser.</p>
-                <div class="proj-panel-tags">
-                  <span><svg class="tag-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 11V6l-6-3-6 3v5c0 5 6 8 6 8s6-3 6-8z"/></svg>MediaPipe Hands</span>
-                  <span><svg class="tag-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>Canvas 2D API</span>
-                  <span><i class="devicon-vitejs-plain colored"></i>Vite</span>
-                  <span><i class="devicon-typescript-plain colored"></i>TypeScript</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel 5 -->
-          <div class="proj-panel" id="proj-5" role="tabpanel">
-            <div class="proj-panel-inner">
-              <div class="proj-panel-img-wrap">
-                <img src="images/theonlysc.png" alt="The Only Support Coordination" class="proj-panel-img" />
-              </div>
-              <div class="proj-panel-content">
-                <span class="proj-panel-role">Full-Stack Developer &bull; Freelance</span>
-                <h3 class="proj-panel-title">The Only Support Coordination</h3>
-                <p class="proj-panel-desc">Designed and developed a full marketing and referral website for an NDIS registered support coordination provider operating across six Australian states. Built a custom WordPress theme from scratch with a service directory, referral form, budget calculator, and blog — optimised for accessibility and mobile performance.</p>
-                <div class="proj-panel-tags">
-                  <span><i class="devicon-wordpress-plain colored"></i>WordPress</span>
-                  <span><i class="devicon-php-plain colored"></i>PHP</span>
-                  <span><i class="devicon-javascript-plain colored"></i>JavaScript</span>
-                  <span><i class="devicon-css3-plain colored"></i>CSS</span>
-                </div>
-                <a href="https://theonlysc.com.au/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top:1.25rem;display:inline-block;">Visit Live Site →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel 6 -->
-          <div class="proj-panel" id="proj-6" role="tabpanel">
-            <div class="proj-panel-inner">
-              <div class="proj-panel-img-wrap">
-                <img src="images/vdmcoaching.png" alt="VDM Triathlon Coaching" class="proj-panel-img" />
-              </div>
-              <div class="proj-panel-content">
-                <span class="proj-panel-role">Full-Stack Developer &bull; Freelance</span>
-                <h3 class="proj-panel-title">VDM Triathlon Coaching</h3>
-                <p class="proj-panel-desc">Designed and built a single-page marketing site for a real triathlon coaching business in Cebu City, Philippines. Features a black-and-red performance-lab aesthetic, scroll-driven word and photo reveals, a scramble-text nav effect, and a horizontally auto-scrolling stats marquee — all built with vanilla HTML, CSS, and JavaScript.</p>
-                <div class="proj-panel-tags">
-                  <span><i class="devicon-html5-plain colored"></i>HTML</span>
-                  <span><i class="devicon-css3-plain colored"></i>CSS</span>
-                  <span><i class="devicon-javascript-plain colored"></i>JavaScript</span>
-                  <span><i class="devicon-vercel-original colored"></i>Vercel</span>
-                </div>
-                <a href="https://vdm-coaching-website.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top:1.25rem;display:inline-block;">Visit Live Site →</a>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /proj-stage -->
       </div>
     </section>
+
+    <!-- "View Project" cursor bubble (desktop only) -->
+    <div class="work-cursor" id="work-cursor" aria-hidden="true">View Project</div>
 
     <!-- ── CERTIFICATIONS ───────────────────────────────────────────────────── -->
     <section id="certifications" class="content-section snap-section">
@@ -382,6 +238,7 @@
 
     </div><!-- /scroll-container -->
 
+
     <!-- ── CHAT WIDGET ──────────────────────────────────────────────────────── -->
     <button id="chat-toggle-btn" aria-label="Open AI chat" aria-expanded="false">
       <svg id="chat-icon-open" class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -415,59 +272,187 @@
       </form>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
     <script src="chat.js" defer></script>
 
-    <!-- ── Project Tab Switcher ──────────────────────────────────────────── -->
+    <!-- ── Selected Work: expanding project cards ────────────────────────── -->
     <script>
     (() => {
-      const tabs   = document.querySelectorAll('.proj-tab');
-      const panels = document.querySelectorAll('.proj-panel');
-      const stage  = document.getElementById('proj-stage');
+      // Add a project: copy an entry. `video` (short, muted loop) is optional
+      // and replaces the image; `link` makes the card clickable.
+      const projects = [
+        {
+          title: 'Wildcats CircuitHub',
+          type: 'Full-Stack Web App',
+          year: '',
+          description: "An equipment management system that digitizes lab equipment tracking for CIT-U's ECE Department, with a Vite/React frontend and a Spring Boot backend.",
+          tags: ['React', 'Spring Boot', 'Full-Stack'],
+          image: 'images/wildcatscircuithub.png',
+        },
+        {
+          title: 'CCS GadgetHub',
+          type: 'Backend Development',
+          year: '2025',
+          description: 'Server-side architecture for a departmental gadget lending platform: REST APIs, Firebase Auth and role-based access for secure borrowing.',
+          tags: ['Spring Boot', 'Firebase', 'REST API'],
+          image: 'images/ccsgadgethub.png',
+        },
+        {
+          title: 'BIMS',
+          type: 'Full-Stack Web App',
+          year: '2024',
+          description: 'A Barangay Information Management System with APIs for structured records management and retrieval, built with Python, Django and Java.',
+          tags: ['Django', 'Python', 'Full-Stack'],
+          image: 'images/bims.png',
+        },
+        {
+          title: 'Pet and Pals',
+          type: 'E-Commerce App',
+          year: '',
+          description: 'A pet-supplies store with a responsive React UI and Spring Boot + MySQL APIs for products and transactions.',
+          tags: ['React', 'Spring Boot', 'MySQL'],
+          image: 'images/pap.png',
+        },
+        {
+          title: 'VaporVandal',
+          type: 'Creative Coding',
+          year: '2026',
+          description: 'An experimental browser toy where you shatter the screen with your hands, built to push real-time MediaPipe hand tracking.',
+          tags: ['MediaPipe', 'TypeScript', 'Canvas 2D'],
+          image: 'images/vaporvandal.png',
+          link: 'https://github.com/gyanna081/vapor-vandal',
+        },
+        {
+          title: 'The Only SC',
+          type: 'Freelance Website',
+          year: '',
+          description: 'A marketing and referral site for an NDIS support coordination provider across six Australian states, on a custom WordPress theme.',
+          tags: ['WordPress', 'PHP', 'Freelance'],
+          image: 'images/theonlysc.png',
+          link: 'https://theonlysc.com.au/',
+        },
+        {
+          title: 'VDM Coaching',
+          type: 'Freelance Website',
+          year: '',
+          description: 'A single-page site for a Cebu City triathlon coaching business, with scroll-driven reveals, a scramble-text nav and a stats marquee.',
+          tags: ['HTML & CSS', 'JavaScript', 'Vercel'],
+          image: 'images/vdmcoaching.png',
+          link: 'https://vdm-coaching-website.vercel.app',
+        },
+      ];
 
-      // Direction: +1 = new tab is to the right, -1 = to the left
-      let currentIndex = 0;
+      const list   = document.getElementById('work-cards');
+      const cursor = document.getElementById('work-cursor');
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const mobile = matchMedia('(max-width: 768px)');
+      const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
 
-      function getIndex(el) {
-        return [...tabs].indexOf(el);
-      }
+      // More cards → the active one needs to grow more to fit its details
+      list.style.setProperty('--grow-active', Math.max(2.2, projects.length * 0.6).toFixed(2));
 
-      function switchTo(newIndex) {
-        if (newIndex === currentIndex) return;
+      const cards = projects.map((p, i) => {
+        const li = document.createElement('li');
+        li.className = 'work-card';
+        const media = p.video
+          ? `<video class="work-card-media" src="${p.video}" poster="${p.image || ''}" autoplay muted loop playsinline></video>`
+          : `<img class="work-card-media" src="${p.image}" alt="" loading="${i < 3 ? 'eager' : 'lazy'}" />`;
+        const meta = [p.type, p.year].filter(Boolean).join(' · ');
+        const tag = p.link ? 'a' : 'div';
+        const attrs = p.link
+          ? `href="${p.link}" target="_blank" rel="noopener noreferrer"`
+          : 'tabindex="0"';
 
-        const dir = newIndex > currentIndex ? 1 : -1;
-        const outPanel = panels[currentIndex];
-        const inPanel  = panels[newIndex];
+        li.innerHTML = `
+          <${tag} class="work-card-inner" ${attrs}>
+            ${media}
+            <span class="work-card-shade"></span>
+            <h3 class="work-card-title">${p.title}</h3>
+            <span class="work-card-label" aria-hidden="true">${p.title}</span>
+            <div class="work-card-details">
+              <p class="work-card-meta">${meta}</p>
+              <p class="work-card-desc">${p.description}</p>
+              <ul class="work-card-tags">${p.tags.map((t) => `<li>${t}</li>`).join('')}</ul>
+            </div>
+          </${tag}>`;
 
-        // Update tab pills
-        tabs[currentIndex].classList.remove('active');
-        tabs[currentIndex].setAttribute('aria-selected', 'false');
-        tabs[newIndex].classList.add('active');
-        tabs[newIndex].setAttribute('aria-selected', 'true');
+        const inner = li.firstElementChild;
+        // Hover (real mouse) and keyboard focus expand; taps are handled on click
+        li.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') activate(i); });
+        inner.addEventListener('focus', () => { if (inner.matches(':focus-visible')) activate(i); });
 
-        // ── Exit: slide old panel out ──────────────────────────────────────
-        outPanel.classList.add('exiting');
-        outPanel.style.setProperty('--slide-dir', dir);
+        // Touch: first tap expands the card, second tap opens the link.
+        // (Phones show every card's details already, so they open straight away.)
+        inner.addEventListener('click', (e) => {
+          if (li.classList.contains('is-active') || mobile.matches) return;
+          e.preventDefault();
+          activate(i);
+        });
 
-        outPanel.addEventListener('animationend', () => {
-          outPanel.classList.remove('active', 'exiting');
-          outPanel.style.removeProperty('--slide-dir');
-        }, { once: true });
-
-        // ── Enter: slide new panel in from opposite side ───────────────────
-        inPanel.style.setProperty('--slide-dir', dir);
-        inPanel.classList.add('active', 'entering');
-
-        inPanel.addEventListener('animationend', () => {
-          inPanel.classList.remove('entering');
-          inPanel.style.removeProperty('--slide-dir');
-        }, { once: true });
-
-        currentIndex = newIndex;
-      }
-
-      tabs.forEach((tab, i) => {
-        tab.addEventListener('click', () => switchTo(i));
+        list.appendChild(li);
+        return li;
       });
+
+      function activate(index) {
+        cards.forEach((c, i) => c.classList.toggle('is-active', i === index));
+      }
+      activate(0);
+
+      // ── Mouse wheel scrolls the row sideways until it reaches an end ─────
+      list.addEventListener('wheel', (e) => {
+        if (mobile.matches || e.shiftKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+        const max = list.scrollWidth - list.clientWidth;
+        if (max <= 0) return;
+        const atStart = list.scrollLeft <= 0 && e.deltaY < 0;
+        const atEnd = list.scrollLeft >= max - 1 && e.deltaY > 0;
+        if (atStart || atEnd) return; // let the page snap to the next section
+        e.preventDefault();
+        list.scrollLeft += e.deltaY;
+      }, { passive: false });
+
+      // ── Cursor bubble (GSAP quickTo) ─────────────────────────────────────
+      if (window.gsap && finePointer.matches) {
+        const dur = reduceMotion ? 0 : 0.45;
+        const xTo = gsap.quickTo(cursor, 'x', { duration: dur, ease: 'power3.out' });
+        const yTo = gsap.quickTo(cursor, 'y', { duration: dur, ease: 'power3.out' });
+        gsap.set(cursor, { xPercent: -50, yPercent: -50, scale: 0 });
+
+        let shown = false;
+        const show = (on) => {
+          if (on === shown) return;
+          shown = on;
+          gsap.to(cursor, { scale: on ? 1 : 0, duration: reduceMotion ? 0 : 0.35, ease: on ? 'back.out(1.7)' : 'power2.in' });
+        };
+
+        list.addEventListener('mousemove', (e) => {
+          if (mobile.matches) return show(false);
+          xTo(e.clientX);
+          yTo(e.clientY);
+          // Only linked projects open a page, so only they get the bubble
+          const card = e.target.closest('.work-card');
+          const linked = !!card && !!card.querySelector('a.work-card-inner');
+          list.classList.toggle('has-bubble', linked);
+          show(linked);
+        });
+        list.addEventListener('mouseleave', () => {
+          list.classList.remove('has-bubble');
+          show(false);
+        });
+      }
+
+      // ── Reveal on scroll (ScrollTrigger) ──────────────────────────────────
+      if (window.gsap && window.ScrollTrigger && !reduceMotion) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from('.work-header > *', {
+          y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1,
+          scrollTrigger: { trigger: '#projects', scroller: '#scroll-container', start: 'top 75%' },
+        });
+        gsap.from(cards, {
+          y: 80, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08,
+          scrollTrigger: { trigger: list, scroller: '#scroll-container', start: 'top 85%' },
+        });
+      }
     })();
     </script>
 
