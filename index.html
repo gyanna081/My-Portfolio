@@ -4,7 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Geanna Ricci P. Pacaña</title>
+    <meta name="description" content="Geanna Ricci P. Pacaña, a Full-Stack Developer from Cebu City building efficient, user-centric applications with JavaScript, Java and Python, focused on RESTful architecture and AI integration." />
+    <meta name="author" content="Geanna Ricci P. Pacaña" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="canonical" href="https://geannapacana.vercel.app/" />
+
+    <!-- Open Graph (LinkedIn, Facebook, Messenger) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://geannapacana.vercel.app/" />
+    <meta property="og:site_name" content="Geanna Pacaña" />
+    <meta property="og:title" content="Geanna Ricci P. Pacaña | Full-Stack Developer" />
+    <meta property="og:description" content="Full-Stack Developer building efficient, user-centric applications with JavaScript, Java and Python. See my projects, experience and get in touch." />
+    <meta property="og:image" content="https://geannapacana.vercel.app/images/me.jpg" />
+    <meta property="og:image:width" content="648" />
+    <meta property="og:image:height" content="648" />
+    <meta property="og:image:alt" content="Portrait of Geanna Pacaña" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Geanna Ricci P. Pacaña | Full-Stack Developer" />
+    <meta name="twitter:description" content="Full-Stack Developer building efficient, user-centric applications with JavaScript, Java and Python." />
+    <meta name="twitter:image" content="https://geannapacana.vercel.app/images/me.jpg" />
+
     <link rel="icon" type="image/jpeg" href="images/me.jpg" />
+    <link rel="apple-touch-icon" href="images/me.jpg" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -132,6 +155,18 @@
           </div>
           <p class="exp-desc">Created and managed WordPress pages, including layout setup, content writing, and basic site maintenance.</p>
         </div>
+
+        <h3 class="section-subtitle">Education</h3>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <p class="exp-role">Bachelor of Science in Information Technology</p>
+              <p class="exp-company">Cebu Institute of Technology – University &bull; Cebu City</p>
+              <p class="exp-date">Graduated May 2026</p>
+            </div>
+            <span class="tag">Graduate</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -160,16 +195,6 @@
         <div class="certs-grid">
 
           <div class="cert-card">
-            <p class="cert-title">HCIA-Storage V4.5 Course</p>
-            <p class="cert-issuer">Huawei &bull; Issued Feb 2022</p>
-          </div>
-
-          <div class="cert-card">
-            <p class="cert-title">HCIP-Storage V5.0 Course</p>
-            <p class="cert-issuer">Huawei &bull; Issued Mar 2022</p>
-          </div>
-
-          <div class="cert-card">
             <p class="cert-title">AWS Academy Graduate – Cloud Architecting</p>
             <p class="cert-issuer">Amazon Web Services &bull; Issued Dec 2025</p>
             <a href="https://www.credly.com/badges/bfb62afa-fe7f-474c-84a3-a9753bb6e57d" target="_blank" class="cert-link">View Credential →</a>
@@ -179,6 +204,16 @@
             <p class="cert-title">AWS Academy Graduate – Cloud Foundations</p>
             <p class="cert-issuer">Amazon Web Services &bull; Issued Sep 2025</p>
             <a href="https://www.credly.com/badges/a5505919-9f85-430e-b9cd-6748bf5e0c19" target="_blank" class="cert-link">View Credential →</a>
+          </div>
+
+          <div class="cert-card">
+            <p class="cert-title">HCIP-Storage V5.0 Course</p>
+            <p class="cert-issuer">Huawei &bull; Issued Mar 2022</p>
+          </div>
+
+          <div class="cert-card">
+            <p class="cert-title">HCIA-Storage V4.5 Course</p>
+            <p class="cert-issuer">Huawei &bull; Issued Feb 2022</p>
           </div>
 
         </div>
@@ -283,6 +318,33 @@
       // and replaces the image; `link` makes the card clickable.
       const projects = [
         {
+          title: 'VDM Coaching',
+          type: 'Freelance Website',
+          year: '',
+          description: 'A single-page site for a Cebu City triathlon coaching business, with scroll-driven reveals, a scramble-text nav and a stats marquee.',
+          tags: ['HTML & CSS', 'JavaScript', 'Vercel'],
+          image: 'images/vdmcoaching.png',
+          link: 'https://vdm-coaching-website.vercel.app',
+        },
+        {
+          title: 'The Only SC',
+          type: 'Freelance Website',
+          year: '',
+          description: 'A marketing and referral site for an NDIS support coordination provider across six Australian states, on a custom WordPress theme.',
+          tags: ['WordPress', 'PHP', 'Freelance'],
+          image: 'images/theonlysc.png',
+          link: 'https://theonlysc.com.au/',
+        },
+        {
+          title: 'VaporVandal',
+          type: 'Creative Coding',
+          year: '2026',
+          description: 'An experimental browser toy where you shatter the screen with your hands, built to push real-time MediaPipe hand tracking.',
+          tags: ['MediaPipe', 'TypeScript', 'Canvas 2D'],
+          image: 'images/vaporvandal.png',
+          link: 'https://github.com/gyanna081/vapor-vandal',
+        },
+        {
           title: 'Wildcats CircuitHub',
           type: 'Full-Stack Web App',
           year: '',
@@ -313,33 +375,6 @@
           description: 'A pet-supplies store with a responsive React UI and Spring Boot + MySQL APIs for products and transactions.',
           tags: ['React', 'Spring Boot', 'MySQL'],
           image: 'images/pap.png',
-        },
-        {
-          title: 'VaporVandal',
-          type: 'Creative Coding',
-          year: '2026',
-          description: 'An experimental browser toy where you shatter the screen with your hands, built to push real-time MediaPipe hand tracking.',
-          tags: ['MediaPipe', 'TypeScript', 'Canvas 2D'],
-          image: 'images/vaporvandal.png',
-          link: 'https://github.com/gyanna081/vapor-vandal',
-        },
-        {
-          title: 'The Only SC',
-          type: 'Freelance Website',
-          year: '',
-          description: 'A marketing and referral site for an NDIS support coordination provider across six Australian states, on a custom WordPress theme.',
-          tags: ['WordPress', 'PHP', 'Freelance'],
-          image: 'images/theonlysc.png',
-          link: 'https://theonlysc.com.au/',
-        },
-        {
-          title: 'VDM Coaching',
-          type: 'Freelance Website',
-          year: '',
-          description: 'A single-page site for a Cebu City triathlon coaching business, with scroll-driven reveals, a scramble-text nav and a stats marquee.',
-          tags: ['HTML & CSS', 'JavaScript', 'Vercel'],
-          image: 'images/vdmcoaching.png',
-          link: 'https://vdm-coaching-website.vercel.app',
         },
       ];
 
