@@ -105,6 +105,20 @@ a { color: inherit; text-decoration: none; }
 
 .icon { width: 20px; height: 20px; }
 
+/* Animated theme toggle: circular reveal via View Transitions API */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Suppress colour transitions while switching so the reveal is crisp */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: none !important;
+}
+
 /* ── Buttons ──────────────────────────────────────────────────────────────── */
 .btn {
   display: inline-flex;

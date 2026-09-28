@@ -473,11 +473,43 @@
         moonIcon.classList.remove('hidden');
       }
 
-      themeToggle.addEventListener('click', () => {
+      function applyThemeToggle() {
         const isDark = document.documentElement.classList.toggle('dark');
         localStorage.theme = isDark ? 'dark' : 'light';
         sunIcon.classList.toggle('hidden');
         moonIcon.classList.toggle('hidden');
+      }
+
+      // Animated circular reveal (ported from Magic UI's AnimatedThemeToggler)
+      themeToggle.addEventListener('click', async () => {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!document.startViewTransition || reduceMotion) {
+          applyThemeToggle();
+          return;
+        }
+
+        const root = document.documentElement;
+        root.classList.add('theme-switching');
+        const transition = document.startViewTransition(applyThemeToggle);
+
+        try {
+          await transition.ready;
+          const { top, left, width, height } = themeToggle.getBoundingClientRect();
+          const x = left + width / 2;
+          const y = top + height / 2;
+          const maxRadius = Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+          );
+
+          root.animate(
+            { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${maxRadius}px at ${x}px ${y}px)`] },
+            { duration: 500, easing: 'ease-in-out', pseudoElement: '::view-transition-new(root)' }
+          );
+          await transition.finished;
+        } finally {
+          root.classList.remove('theme-switching');
+        }
       });
 
       // ── Navbar scroll shadow — driven by scroll-container (see below) ──────
