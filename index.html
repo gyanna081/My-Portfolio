@@ -50,23 +50,46 @@
     <div id="scroll-container">
 
     <!-- ── NAV ─────────────────────────────────────────────────────────────── -->
-    <nav id="navbar">
-      <div class="nav-inner">
-        <span class="nav-logo">GRP</span>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#certifications">Certifications</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+    <header id="navbar">
+      <div class="nav-bar">
+        <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu-overlay">
+          <svg viewBox="0 0 56 24" width="56" height="24" aria-hidden="true">
+            <line class="menu-toggle-line menu-toggle-line--a" x1="2" y1="12" x2="54" y2="12" />
+            <line class="menu-toggle-line menu-toggle-line--b" x1="2" y1="12" x2="54" y2="12" />
+          </svg>
+        </button>
+        <a href="#about" class="nav-logo" aria-label="GRP, back to top">GRP<sup>®</sup></a>
         <button id="theme-toggle" aria-label="Toggle theme">
           <svg id="sun-icon" class="icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
           <svg id="moon-icon" class="icon hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
         </button>
       </div>
-    </nav>
+
+      <!-- Full-screen "blur menu" overlay -->
+      <div id="menu-overlay" class="menu-overlay" role="dialog" aria-modal="true" aria-label="Site menu" inert>
+        <p class="menu-intro">Full-Stack Developer<br />Based in Cebu City, working globally</p>
+
+        <nav class="menu" aria-label="Primary">
+          <a href="#about"          class="menu-link" style="--i:0"><span class="menu-link-inner"><span class="arrow" aria-hidden="true">→</span>About</span></a>
+          <a href="#skills"         class="menu-link" style="--i:1"><span class="menu-link-inner"><span class="arrow" aria-hidden="true">→</span>Skills</span></a>
+          <a href="#experience"     class="menu-link" style="--i:2"><span class="menu-link-inner"><span class="arrow" aria-hidden="true">→</span>Experience</span></a>
+          <a href="#projects"       class="menu-link" style="--i:3"><span class="menu-link-inner"><span class="arrow" aria-hidden="true">→</span>Projects</span></a>
+          <a href="#certifications" class="menu-link" style="--i:4"><span class="menu-link-inner"><span class="arrow" aria-hidden="true">→</span>Certifications</span></a>
+          <a href="#contact"        class="menu-link" style="--i:5"><span class="menu-link-inner"><span class="arrow" aria-hidden="true">→</span>Contact</span></a>
+        </nav>
+
+        <div class="menu-footer">
+          <div class="menu-inquiries">
+            <span class="menu-muted">For inquiries</span>
+            <a href="mailto:pacanageanna@gmail.com" class="menu-underline">pacanageanna@gmail.com</a>
+          </div>
+          <div class="menu-social">
+            <a href="https://www.linkedin.com/in/geannapacana/" target="_blank" rel="noopener noreferrer" class="menu-underline">LinkedIn</a>
+            <a href="https://github.com/gyanna081" target="_blank" rel="noopener noreferrer" class="menu-underline">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </header>
 
     <!-- ── HERO ─────────────────────────────────────────────────────────────── -->
     <section id="about" class="hero snap-section">
@@ -624,6 +647,7 @@
       const scrollContainer = document.getElementById('scroll-container');
       const sections = [...document.querySelectorAll('.snap-section')];
       const dots     = [...document.querySelectorAll('.page-dot')];
+      const menuLinks = [...document.querySelectorAll('.menu-link')];
 
       function updateDots() {
         const mid = scrollContainer.scrollTop + scrollContainer.clientHeight / 2;
@@ -634,6 +658,14 @@
           if (dist < minDist) { minDist = dist; closest = i; }
         });
         dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+        // Keep the menu's active arrow in sync with the active dot
+        const activeHref = '#' + sections[closest].id;
+        menuLinks.forEach(link => {
+          const isActive = link.getAttribute('href') === activeHref;
+          link.classList.toggle('is-active', isActive);
+          if (isActive) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        });
       }
 
       scrollContainer.addEventListener('scroll', updateDots, { passive: true });
@@ -647,7 +679,7 @@
       });
 
       // Nav link clicks → scroll into snap container
-      document.querySelectorAll('a[href^="#"]').forEach(link => {
+      document.querySelectorAll('a[href^="#"]:not(.menu-link)').forEach(link => {
         link.addEventListener('click', e => {
           const target = document.querySelector(link.getAttribute('href'));
           if (target && target.closest('#scroll-container')) {
@@ -661,6 +693,75 @@
       scrollContainer.addEventListener('scroll', () => {
         navbar.classList.toggle('scrolled', scrollContainer.scrollTop > 20);
       }, { passive: true });
+
+      // ── Blur menu overlay ─────────────────────────────────────────────────
+      const menuToggle  = document.getElementById('menu-toggle');
+      const menuOverlay = document.getElementById('menu-overlay');
+      const navLogo     = document.querySelector('.nav-logo');
+
+      function isMenuOpen() {
+        return navbar.classList.contains('menu-open');
+      }
+
+      function openMenu() {
+        navbar.classList.add('menu-open');
+        menuOverlay.inert = false;
+        menuToggle.setAttribute('aria-expanded', 'true');
+        menuToggle.setAttribute('aria-label', 'Close menu');
+        scrollContainer.style.overflowY = 'hidden';   // lock page scroll
+      }
+
+      function closeMenu({ restoreFocus = true } = {}) {
+        navbar.classList.remove('menu-open');
+        menuOverlay.inert = true;
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Open menu');
+        scrollContainer.style.overflowY = '';
+        if (restoreFocus) menuToggle.focus();
+      }
+
+      menuToggle.addEventListener('click', () => {
+        isMenuOpen() ? closeMenu() : openMenu();
+      });
+
+      navLogo.addEventListener('click', () => {
+        if (isMenuOpen()) closeMenu({ restoreFocus: false });
+      });
+
+      // Menu link → close overlay, then smooth-scroll to the section
+      menuLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          const target = document.querySelector(link.getAttribute('href'));
+          if (!target) return;
+          e.preventDefault();
+          closeMenu({ restoreFocus: false });
+          target.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      // Esc closes; Tab stays trapped between the top bar and the overlay
+      document.addEventListener('keydown', e => {
+        if (!isMenuOpen()) return;
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          closeMenu();
+          return;
+        }
+        if (e.key !== 'Tab') return;
+        const focusables = [menuToggle, navLogo, themeToggle, ...menuOverlay.querySelectorAll('a[href], button')];
+        const first = focusables[0];
+        const last  = focusables[focusables.length - 1];
+        if (!focusables.includes(document.activeElement)) {
+          e.preventDefault();
+          first.focus();
+        } else if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      });
     </script>
   </body>
 </html>

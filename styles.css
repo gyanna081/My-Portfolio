@@ -40,53 +40,248 @@ a { color: inherit; text-decoration: none; }
 .hidden { display: none !important; }
 .hidden-field { display: none; }
 
-/* ── Navbar ───────────────────────────────────────────────────────────────── */
+/* ── Navbar (editorial "blur menu") ───────────────────────────────────────── */
+:root {
+  --menu-bg:     #ececec;
+  --menu-text:   #111111;
+  --menu-muted:  #6b6b6b;
+  --menu-gutter: 16px;
+}
+
+html.dark {
+  --menu-bg:     #0a0a0a;
+  --menu-text:   #f0f0f0;
+  --menu-muted:  #8a8a8a;
+}
+
 #navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--nav-h);
-  z-index: 100;
+  z-index: 500;               /* above page dots, chat and cursor bubble */
   background: transparent;
-  transition: background 0.3s, border-bottom 0.3s;
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s, border-color 0.3s;
 }
 
 #navbar.scrolled {
   background: var(--bg);
-  border-bottom: 1px solid var(--border);
+  border-bottom-color: var(--border);
 }
 
-.nav-inner {
-  max-width: 1100px;
-  margin: 0 auto;
+#navbar.menu-open {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+.nav-bar {
+  position: relative;
+  z-index: 2;                 /* stays above the overlay */
   height: 100%;
-  padding: 0 2rem;
-  display: flex;
+  padding: 0 var(--menu-gutter);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 2rem;
+}
+
+.menu-toggle {
+  justify-self: start;
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+  color: var(--text);
+  display: flex;
+}
+
+.menu-toggle svg { overflow: visible; }
+
+.menu-toggle-line {
+  stroke: currentColor;
+  stroke-width: 1.2;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.35s ease;
+}
+
+/* Closed: two parallel lines */
+.menu-toggle-line--a { transform: translateY(-4px); }
+.menu-toggle-line--b { transform: translateY(4px); }
+.menu-toggle:hover .menu-toggle-line--a { transform: translateY(-4px) rotate(6deg); }
+.menu-toggle:hover .menu-toggle-line--b { transform: translateY(4px) rotate(-6deg); }
+
+/* Open: the X */
+.menu-toggle[aria-expanded="true"] .menu-toggle-line--a { transform: rotate(23deg); }
+.menu-toggle[aria-expanded="true"] .menu-toggle-line--b { transform: rotate(-23deg); }
+.menu-toggle[aria-expanded="true"]:hover .menu-toggle-line--a { transform: rotate(29deg); }
+.menu-toggle[aria-expanded="true"]:hover .menu-toggle-line--b { transform: rotate(-29deg); }
+
+.menu-toggle:focus-visible,
+.nav-logo:focus-visible,
+.menu-overlay a:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
 }
 
 .nav-logo {
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  justify-self: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--text);
-  margin-right: auto;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.75rem;
+.nav-logo sup {
+  font-size: 0.5em;
+  margin-left: 1px;
+  vertical-align: super;
+  line-height: 0;
 }
 
-.nav-links a {
-  font-size: 0.875rem;
+#theme-toggle { justify-self: end; }
+
+/* ── Overlay ── */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: calc(var(--nav-h) + 8px) var(--menu-gutter) var(--menu-gutter);
+  background: var(--menu-bg);
+  color: var(--menu-text);
+  overflow-x: hidden;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+}
+
+#navbar.menu-open .menu-overlay {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease, visibility 0s;
+}
+
+#navbar.menu-open .menu-toggle,
+#navbar.menu-open .nav-logo,
+#navbar.menu-open #theme-toggle { color: var(--menu-text); }
+
+.menu-intro {
+  font-size: 13px;
   font-weight: 500;
-  color: var(--text-muted);
-  transition: color 0.2s;
+  line-height: 1.4;
 }
 
-.nav-links a:hover { color: var(--text); }
+.menu {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem 0;
+}
+
+.menu-link {
+  display: block;
+  font-size: clamp(36px, 5vw, 80px);
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--menu-text);
+  transition: filter 0.35s ease, opacity 0.35s ease;
+}
+
+/* Staggered slide-up on open (lives on the inner span so it doesn't delay the blur) */
+.menu-link-inner {
+  display: inline-flex;
+  align-items: baseline;
+  opacity: 0;
+  transform: translateY(40%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#navbar.menu-open .menu-link-inner {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--i) * 60ms + 0.1s);
+}
+
+.arrow {
+  display: inline-block;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-0.4em);
+  transition: max-width 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+}
+
+.menu-link.is-active .arrow {
+  max-width: 1.2em;
+  opacity: 1;
+  transform: none;
+}
+
+/* Blur siblings on hover (pointer devices only) */
+@media (hover: hover) {
+  .menu:hover .menu-link { filter: blur(4px); opacity: 0.55; }
+  .menu:hover .menu-link:hover { filter: none; opacity: 1; }
+
+  .menu:hover .menu-link .arrow { max-width: 0; opacity: 0; transform: translateX(-0.4em); }
+  .menu:hover .menu-link:hover .arrow { max-width: 1.2em; opacity: 1; transform: none; }
+}
+
+/* Same treatment for keyboard focus */
+.menu:has(.menu-link:focus-visible) .menu-link { filter: blur(4px); opacity: 0.55; }
+.menu:has(.menu-link:focus-visible) .menu-link:focus-visible { filter: none; opacity: 1; }
+.menu:has(.menu-link:focus-visible) .menu-link .arrow { max-width: 0; opacity: 0; transform: translateX(-0.4em); }
+.menu:has(.menu-link:focus-visible) .menu-link:focus-visible .arrow { max-width: 1.2em; opacity: 1; transform: none; }
+.menu-link:focus-visible { outline: none; }
+
+.menu-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.menu-inquiries {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-muted { color: var(--menu-muted); }
+
+.menu-social {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.menu-underline {
+  color: var(--menu-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+@media (max-width: 599px) {
+  .menu-link { font-size: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-overlay,
+  .menu-link,
+  .menu-link-inner,
+  .arrow,
+  .menu-toggle-line { transition: none !important; }
+  .menu-link-inner { transform: none; }
+}
 
 #theme-toggle {
   background: none;
@@ -803,7 +998,6 @@ footer {
 
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .nav-links { display: none; }
 
   .contact-inner {
     grid-template-columns: 1fr;
